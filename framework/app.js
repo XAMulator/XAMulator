@@ -7,11 +7,9 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var override = require('method-override');
-//var home = require('./routes/home.js');
-var routes = require('./routes');
-var home = require('./routes/home.js')
-//var recipes = require('./routes/recipes.js');
 
+var routes = require('./routes');
+var home = require('./routes/home.js');
 var app = express();
 
 // all environments
