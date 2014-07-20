@@ -28,10 +28,9 @@ block rightBar
 
 
 block pageContent
-  .sticky
-    .row
-      .large-12.columns
-        h1 Dashboard
+  .row
+    .large-12.columns
+      h1 Dashboard
   .row
     .large-12.columns
       .panel
@@ -167,5 +166,5 @@ block pageContent
                           .small-3.columns
                             span.postfix Pts.
           br
-        a.large.radius.button
-          button.btn(type='button', ng-click='newQuestion()') Add Question
+        center
+          a.medium.radius.button(ng-click='newQuestion()') Add Question
