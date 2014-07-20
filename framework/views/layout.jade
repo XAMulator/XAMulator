@@ -9,31 +9,49 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='stylesheets/foundation.css')
     link(rel='stylesheet', type='text/css', href='stylesheets/slick.css')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
     link(href='http://fonts.googleapis.com/css?family=Oswald:500,300', rel='stylesheet', type='text/css')
   body
     block navBar
-        nav(class='navbar navbar-default', role='navigation')
-            .container-fluid
-                .navbar-header
-                    button(class='navbar-toggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                        span.sronly
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a(class='navbar-brand', href='/#') Home
-                #bs-example-navbar-collapse-1(class='collapse navbar-collapse')
-                    ul(class='nav navbar-nav')
-                        li
-                          a(href='/home') Teacher Portal
-                        li
-                          a(href='/home/test') Shh! Testing in Progress
-                        li
-                          a(href='/home/results') Test Results
+      .fixed
+        nav.top-bar(data-topbar='data-topbar')
+          ul.title-area
+            li.name
+              h1
+                a(href='#') #{appname}
+            //
+               Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+            li.toggle-topbar.menu-icon
+              a(href='#')
+                span Menu
+          section.top-bar-section
+            ul.right
+              block rightBar
+              li.has-dropdown
+                a(href='#') Login/Logout
+                ul.dropdown
+                  li
+                    a(href='#') First link in dropdown
+            //
+               Left Nav Section
+            ul.left
+              li.active
+                a(href='#') Home
+              li.divider
+              li.has-form
+                .row.collapse
+                  .large-8.columns
+                    input(type='text', placeholder='Search...')
+                  .large-4.columns
+                    a.alert.button.expand(href='#') Search
+      br
+      br
 
     //These are populated by extension views
     block pageTitle
     block pageContent
+
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
     script

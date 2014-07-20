@@ -1,79 +1,48 @@
 extends layout
 
-block pageTitle
-  h1= appname
+block rightBar
+  //
+     Right Nav Section
+  li.active
+    a.medium.radius.button(href='#') Add a Test
+  li.divider
+  li.active
+    a.medium.radius.button(href='#', data-reveal-id='firstModal') View All Tests
+  #firstModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
+    .row
+      .large-12.columns
+        h2 View All Tests
+    .row
+      .large-12.columns
+        ul.clearing-thumbs.small-block-grid-4(data-clearing='data-clearing')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 1', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 2', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 3', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 4', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 1', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 2', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 3', src='img/folderpic.jpg')
+          li
+            a(href='img/folderpic.jpg')
+              img(data-caption='File 4', src='img/folderpic.jpg')
+    a.close-reveal-modal ×
+
 
 block pageContent
-  nav.top-bar(data-topbar='data-topbar')
-    ul.title-area
-      li.name
-        h1
-          a(href='#') #{appname}
-      //
-         Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-      li.toggle-topbar.menu-icon
-        a(href='#')
-          span Menu
-    section.top-bar-section
-      //
-         Right Nav Section
-      ul.right
-        li.active
-          a.medium.radius.button(href='#') Add a Test
-        li.divider
-        li.active
-          a.medium.radius.button(href='#', data-reveal-id='firstModal') View All Tests
-        #firstModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
-          .row
-            .large-12.columns
-              h2 View All Tests
-          .row
-            .large-12.columns
-              ul.clearing-thumbs.small-block-grid-4(data-clearing='data-clearing')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 1', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 2', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 3', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 4', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 1', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 2', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 3', src='img/folderpic.jpg')
-                li
-                  a(href='img/folderpic.jpg')
-                    img(data-caption='File 4', src='img/folderpic.jpg')
-          a.close-reveal-modal ×
-        li.has-dropdown
-          a(href='#') Login/Logout
-          ul.dropdown
-            li
-              a(href='#') First link in dropdown
-      //
-         Left Nav Section
-      ul.left
-        li.active
-          a(href='#') Home
-        li.divider
-        li.has-form
-          .row.collapse
-            .large-8.columns
-              input(type='text', placeholder='Search...')
-            .large-4.columns
-              a.alert.button.expand(href='#') Search
-  br
-  br
   .row
     .large-12.columns
       h1 Dashboard
