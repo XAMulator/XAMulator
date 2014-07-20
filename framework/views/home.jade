@@ -4,8 +4,8 @@ html.no-js(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Dashboard
-    link(rel='stylesheet', href='foundation/css/foundation.css')
-    script(src='foundation/js/vendor/modernizr.js')
+    link(rel='stylesheet', href='stylesheets/foundation.css')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
     link(href='http://fonts.googleapis.com/css?family=Oswald:500,300', rel='stylesheet', type='text/css')
   body
     nav.top-bar(data-topbar='data-topbar')
@@ -26,7 +26,7 @@ html.no-js(lang='en')
             a.medium.radius.button(href='#') Add a Test
           li.divider
           li.active
-            a.medium.radius.button(href='#', data-reveal-id='firstModal') View All Test
+            a.medium.radius.button(href='#', data-reveal-id='firstModal') View All Tests
           #firstModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
             .row
               .large-12.columns
@@ -216,7 +216,7 @@ html.no-js(lang='en')
             br
           center
             a.large.radius.button(href='#') Add Question
-    script(src='foundation/js/vendor/jquery.js')
-    script(src='foundation/js/foundation.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
     script
       $(document).foundation();
