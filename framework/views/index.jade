@@ -3,7 +3,6 @@ extends layout
 block pageTitle
   .jumbotron
     h1= eTest
-    h2 eTest is an innovative new platform that allows teachers and students to testing testing for a revolutionry education for Amurica and blah blah.
 block pageContent
   .row
     .large-12.columns
@@ -12,12 +11,19 @@ block pageContent
   .row
     .large-12.columns
       .panel
-        h3 We’re stoked you want to try eTest!
-        p To get going, first register. Then check out this awesome shit.
-        p Once you're exhausted our shitty service, you probably shouldn't check out...
+        .row
+          .large-4.medium-4.push-8.columns
+            img(src='/img/favicon.png')
+            br
+            br
+          .large-8.medium-8.pull-4.columns
+            h2 eTest is an innovative new platform that allows teachers and students to easily take and analyze tests. eTest is a revolutionary and novel education platform for students all over America and in the international community.
+            h3 We’re stoked you want to try eTest!
+            p To get going, first register. Then check out this awesome stuff.
+            p Check us out on
         br
         .row
-          .large-4.medium-4.columns
+          .large-6.medium-6.columns
             center
               p
                 a(href='#', data-reveal-id='teacherModal') Teachers...
@@ -87,13 +93,7 @@ block pageContent
                       a.medium.round.success.button(href='#') Login
                       br
               a.close-reveal-modal &times;
-          .large-4.medium-4.columns
-            center
-              p
-                a(href='https://github.com/justinyangusa/angelhack') eTest on Github
-                br
-                | Latest code, issue reports, feature requests and more.
-          .large-4.medium-4.columns
+          .large-6.medium-6.columns
             center
               p
                 a(href='#', data-reveal-id='studentModal') Students...
