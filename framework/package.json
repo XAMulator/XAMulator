@@ -7,11 +7,17 @@
     "name": "sedouard",
     "email": ""
   },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "http://github.com/justinyangusa/angelhack.git"
+  },
   "dependencies": {
     "bootstrap": "^3.2.0",
     "express": "^3.4.4",
     "jade": "*",
     "nib": "^1.0.3",
-    "stylus": "*"
+    "stylus": "*",
+    "method-override": "*"
   }
 }

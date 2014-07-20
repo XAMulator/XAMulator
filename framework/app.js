@@ -4,10 +4,12 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var recipes = require('./routes/recipes.js');
 var http = require('http');
 var path = require('path');
+var override = require('method-override');
+//var home = require('./routes/home.js');
+var routes = require('./routes');
+//var recipes = require('./routes/recipes.js');
 
 var app = express();
 
@@ -19,7 +21,6 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,7 +31,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/recipes/*', recipes.list);
+app.get('/home', function(){ res.render('home', {option: 'value'});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
