@@ -1,0 +1,10 @@
+{
+  "name": "hello",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "width": 800,
+    "height": 600,
+    "frame": false
+  }
+}
