@@ -52,11 +52,11 @@ html(ng-app='ngAddApp', lang='en')
     //These are populated by extension views
     block pageTitle
     block pageContent
-
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js')
-    script(src='button.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
+    script(src='questions.js', deferred='')
+    script(src='button.js', deferred='')
     script
       $(document).foundation();

@@ -6,7 +6,14 @@
 //http://github.com/justinyangusa/angelhack
 
 //Angular JS
+function addListener (reference){
+  console.log(reference);
 
+  $(".question-type")[reference].onchange = function () {
+    console.log(this.value);
+    changeQuestionType(this.value, reference + 1);
+  }
+};
 var ngAddApp = angular.module("ngAddApp", []);
 
     ngAddApp.controller("MainCtrl", ['$scope', function ($scope) {
@@ -18,12 +25,16 @@ var ngAddApp = angular.module("ngAddApp", []);
       $scope.newQuestion = function () {
         $scope.questions.push( {} );
         numOfQuestions++;
-      }
+        setTimeout(function() {
+          addListener(numOfQuestions - 1);
+        }, 100)
 
+      };
+  
       $scope.answers = [ {} ]; //array of destination address boxes
       $scope.newAnswer = function () {
         $scope.answers.push( {} );
         numOfAnswers++;
-      }
+     }
 
 }]);
