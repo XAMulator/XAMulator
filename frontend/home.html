@@ -10,67 +10,69 @@
   </head>
 
   <body>
-  	<nav class="top-bar" data-topbar>
-	  <ul class="title-area">
-	    <li class="name">
-	      <h1><a href="#">[INSERT NAME HERE]</a></h1>
-	    </li>
-	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  	<div class="fixed">
+	  	<nav class="top-bar" data-topbar>
+		  <ul class="title-area">
+		    <li class="name">
+		      <h1><a href="#">[INSERT NAME HERE]</a></h1>
+		    </li>
+		     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 
-	  </ul>
-	  <section class="top-bar-section">
-	    <!-- Right Nav Section -->
-	    <ul class="right">
-	      <li class="active"><a href="#" class="medium radius button">Add a Test</a></li>
-	      <li class="divider"></li>
-	      <li class="active"><a href="#" data-reveal-id="firstModal" class="medium radius button">View All Test</a></li>
-	      <div style="position:absolute; float:left" id="firstModal" class="reveal-modal" data-reveal>
-	      	<div class="row">
-	      		<div class="large-12 columns">
-	      			<h2>View All Tests</h2>
-	      		</div>
-	      	</div>
-	      	<div class="row">
-	      		<div class="large-12 columns">
-	      			<ul class="clearing-thumbs small-block-grid-4" data-clearing>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 1" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 2" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 3" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 4" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 1" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 2" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 3" src="img/folderpic.jpg"></a></li>
-		              <li><a href="img/folderpic.jpg"><img data-caption="File 4" src="img/folderpic.jpg"></a></li>
-		            </ul>
-	      		</div>
-	      	</div>
-	      	<a class="close-reveal-modal">&#215;</a>
-	      </div>
-	      <li class="has-dropdown">
-	        <a href="#">Login/Logout</a>
-	        <ul class="dropdown">
-	          <li><a href="#">First link in dropdown</a></li>
-	        </ul>
-	      </li>
-	    </ul>
-	    <!-- Left Nav Section -->
-	    <ul class="left">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li class="divider"></li>
-	      <li class="has-form">
-			  <div class="row collapse">
-			    <div class="large-8 columns">
-			      <input type="text" placeholder="Search...">
-			    </div>
-			    <div class="large-4 columns">
-			      <a href="#" class="alert button expand">Search</a>
-			    </div>
-			  </div>
-			</li>
-	    </ul>
-	  </section>
-	</nav>
+		  </ul>
+		  <section class="top-bar-section">
+		    <!-- Right Nav Section -->
+		    <ul class="right">
+		      <li class="active"><a href="#" class="medium radius button">Add a Test</a></li>
+		      <li class="divider"></li>
+		      <li class="active"><a href="#" data-reveal-id="firstModal" class="medium radius button">View All Test</a></li>
+		      <div style="position:absolute; float:left" id="firstModal" class="reveal-modal" data-reveal>
+		      	<div class="row">
+		      		<div class="large-12 columns">
+		      			<h2>View All Tests</h2>
+		      		</div>
+		      	</div>
+		      	<div class="row">
+		      		<div class="large-12 columns">
+		      			<ul class="clearing-thumbs small-block-grid-4" data-clearing>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 1" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 2" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 3" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 4" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 1" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 2" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 3" src="img/folderpic.jpg"></a></li>
+			              <li><a href="img/folderpic.jpg"><img data-caption="File 4" src="img/folderpic.jpg"></a></li>
+			            </ul>
+		      		</div>
+		      	</div>
+		      	<a class="close-reveal-modal">&#215;</a>
+		      </div>
+		      <li class="has-dropdown">
+		        <a href="#">Login/Logout</a>
+		        <ul class="dropdown">
+		          <li><a href="#">First link in dropdown</a></li>
+		        </ul>
+		      </li>
+		    </ul>
+		    <!-- Left Nav Section -->
+		    <ul class="left">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li class="divider"></li>
+		      <li class="has-form">
+				  <div class="row collapse">
+				    <div class="large-8 columns">
+				      <input type="text" placeholder="Search...">
+				    </div>
+				    <div class="large-4 columns">
+				      <a href="#" class="alert button expand">Search</a>
+				    </div>
+				  </div>
+				</li>
+		    </ul>
+		  </section>
+		</nav>
+	</div>
 
 	<br/>
 	<br/>
@@ -97,6 +99,7 @@
 						          <option value="matching">Matching</option>
 						          <option value="fuck">Other</option>
 						        </select>
+						        <center><span class="round label">Question #1</span></center>
 							</div>
 
 							<div class="large-7 columns">
@@ -168,6 +171,7 @@
 						          <option value="matching">Matching</option>
 						          <option value="fuck">Other</option>
 						        </select>
+						        <center><span class="round label">Question #2</span></center>
 							</div>
 
 							<div class="large-7 columns">
@@ -268,7 +272,7 @@
 							</div>
 
 							<div class="large-2 columns">
-							<a><h4 stlye="float:right;" align="right"><FONT color="F21111">x</FONT></h4></a>
+								<a><h4 stlye="float:right;" align="right"><FONT color="F21111">x</FONT></h4></a>
 								<div class="row">
 								<br/>
 								<br/>
