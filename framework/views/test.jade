@@ -1,0 +1,16 @@
+﻿extends layout
+block pageTitle
+    h1 #{tests.kind}
+block pageContent
+
+    ul
+    each test in tests.list
+        //create a new well for each test model
+        .well
+            h2 #{test.name}
+            img(src='#{test.photo}')
+            h3 Yolo questions
+            h5
+                ul
+                each problem in test.problems
+                    li=problem
