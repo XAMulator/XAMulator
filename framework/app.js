@@ -8,6 +8,7 @@ var routes = require('./routes');
 var recipies = require('./routes/recipies.js');
 var http = require('http');
 var path = require('path');
+var jade = require('jade');
 
 var app = express();
 
