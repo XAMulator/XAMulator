@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <script>
+    var gui = require('nw.gui');
+    var Window = gui.Window.get();
+    var markdown = require('markdown').markdown;
+    document.write(markdown.toHTML("Hello **World**!"));
+    Window.enterKioskMode();
+    Window.setAlwaysOnTop(true);
+    Window.on("blur", function() {
+    	Window.focus();
+    });
+    function enterPassword() {
+    	if (prompt("Enter password", "") == "butts") {
+    		Window.leaveKioskMode();
+    		Window.setAlwaysOnTop(false);
+  	  	} else {
+  	  		alert("incorrect mfern password n00b");
+  	  	}
+    }
+    </script>
+    <button onclick="enterPassword()">asdf</button>
+    <button onclick="Window.close(true)">asdf2</button>
+  </body>
+</html>
