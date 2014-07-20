@@ -9,37 +9,40 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-http.createSever(function(req, res) {
+http.createServer(function(req, res) {
 	var data = "";
 	req.on("data", function(e) {
 		data += e;
 	});
 	req.on("end", function() {
-		connection.query("SELECT * FROM tests WHERE P_Id=" + e + " LIMIT 1", function(err, rows, fields) {
+		res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
+		console.log("received request");
+		connection.query("SELECT * FROM tests WHERE P_Id=" + data, function(err, rows, fields) {
 			if (err) throw err;
-			if (rows) {
+			if (rows.length > 0) {
 				if (rows[0].testAvailable) {
-					connection.query("SELECT * FROM questions WHERE P_Id=" + e, function(err, rows, field) {
+					connection.query("SELECT * FROM questions WHERE test=" + data, function(err, rows, field) {
+						var questionArray = [];
+						rows.forEach(function(e) {
+							questionArray.push(JSON.parse(e.questionContent));
+						});
 						// parse test and send test here.
-						res.writeHead(200);
-						res.write("not implemented scrubs");
+						
+						res.write(JSON.stringify({"error": null, "test": questionArray}));
 						res.end();
 					});
 				} else {
-					res.writeHead(500);
-					res.write("{'error': 'test not available'}");
+					res.write('{"error": "test not available"}');
 					res.end();
 				}
-				res.writeHead(200);
 				delete rows[0].P_Id;
 				delete rows[0].O_Id;
 				res.write(JSON.stringify(rows[0]));
 				res.end();
 			} else {
-				res.writeHead(500);
-				res.write("{'error': 'test not found'}");
+				res.write("{\"error\": \"test not found\"}");
 				res.end();
 			}
 		});
 	});
-}).listen(8000);
+}).listen(80);
