@@ -1,5 +1,8 @@
 var http = require("http");
 var mysql = require("mysql");
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
 
 var connection = mysql.createConnection({
 	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
@@ -9,40 +12,35 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-http.createServer(function(req, res) {
-	var data = "";
-	req.on("data", function(e) {
-		data += e;
-	});
-	req.on("end", function() {
-		res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
-		console.log("received request");
-		connection.query("SELECT * FROM tests WHERE P_Id=" + data, function(err, rows, fields) {
-			if (err) throw err;
-			if (rows.length > 0) {
-				if (rows[0].testAvailable) {
-					connection.query("SELECT * FROM questions WHERE test=" + data, function(err, rows, field) {
-						var questionArray = [];
-						rows.forEach(function(e) {
-							questionArray.push(JSON.parse(e.questionContent));
-						});
-						// parse test and send test here.
-						
-						res.write(JSON.stringify({"error": null, "test": questionArray}));
-						res.end();
+app.use(bodyParser.text());
+app.post("/", function(req, res) {
+	res.set("Access-Control-Allow-Origin", "*");
+	var body = req.body;
+	console.log(body);
+	connection.query("SELECT * FROM tests WHERE P_Id=" + body, function(err, rows, fields) {
+		if (rows.length > 0) {
+			console.log(rows[0]);
+			if (rows[0].testAvailable) {
+				console.log("test aval");
+				connection.query("SELECT * FROM questions WHERE test=" + body, function(err, rows, field) {
+					var questionArray = [];
+					rows.forEach(function(e) {
+						console.log(e);
+						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON)});
 					});
-				} else {
-					res.write('{"error": "test not available"}');
-					res.end();
-				}
-				delete rows[0].P_Id;
-				delete rows[0].O_Id;
-				res.write(JSON.stringify(rows[0]));
-				res.end();
+					// parse test and send test here.
+					
+					res.send(JSON.stringify({"error": null, "test": questionArray}));
+				});
 			} else {
-				res.write("{\"error\": \"test not found\"}");
-				res.end();
+				console.log("test not aval");
+				res.send('{"error": "test not available"}');
 			}
-		});
+		} else {
+			console.log("test not aval2");
+			res.send("{\"error\": \"test not found\"}");
+		}
 	});
-}).listen(80);
+
+});
+app.listen(8001);

@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <script>
-    var gui = require('nw.gui');
-    var Window = gui.Window.get();
-    var markdown = require('markdown').markdown;
-    document.write(markdown.toHTML("Hello **World**!"));
-    Window.enterKioskMode();
-    Window.setAlwaysOnTop(true);
-    Window.on("blur", function() {
-    	Window.focus();
-    });
-    function enterPassword() {
-    	if (prompt("Enter password", "") == "butts") {
-    		Window.leaveKioskMode();
-    		Window.setAlwaysOnTop(false);
-  	  	} else {
-  	  		alert("incorrect mfern password n00b");
-  	  	}
-    }
-    </script>
-    <button onclick="enterPassword()">asdf</button>
-    <button onclick="Window.close(true)">asdf2</button>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[NAME] | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section class="container">
+    <div class="login">
+      <h1 style="font-family: 'Open Sans Condensed', sans-serif;">[NAME]: Student Client</h1>
+      <form method="post" action="/login">
+        <p><input type="text" name="user" value="" placeholder="Username or Email"></p>
+        <p><input type="password" name="pw" value="" placeholder="Password"></p>
+        <p class="remember_me">
+          <label style="font-family: 'Open Sans Condensed', sans-serif;">
+            <input type="checkbox" name="remember_me" id="remember_me" > 
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit"><input href="student.html" type="submit" name="commit" value="Login"></p>
+      </form>
+    </div>
+  </section>
+</body>
 </html>

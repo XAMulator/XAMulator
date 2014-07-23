@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>eTest | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+    var gui = require('nw.gui');
+    var XMLHttpRequest2 = require("xhr2");
+    var Window = gui.Window.get();
+    var markdown = require('markdown').markdown;
+    document.write(markdown.toHTML("Hello **World**!"));
+    Window.enterKioskMode();
+    Window.setAlwaysOnTop(true);
+    Window.on("blur", function() {
+      Window.focus();
+    });
+    function relocate() {
+      setTimeout(function() {location='student.html';}, 1000);
+    }
+  </script>
+  <section class="container">
+    <div class="login">
+      <h1 style="font-family: 'Open Sans Condensed', sans-serif;">eTest: Student Client</h1>
+      <form method="post" action="/login" onsubmit="return false;">
+        <p><input type="text" name="user" value="" placeholder="Username or Email"></p>
+        <p><input type="password" name="pw" value="" placeholder="Password"></p>
+        <p class="remember_me">
+          <label style="font-family: 'Open Sans Condensed', sans-serif;">
+            <input type="checkbox" name="remember_me" id="remember_me" > 
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit"><input type="submit" name="commit" value="Login" onclick="relocate();"></p>
+      </form>
+    </div>
+  </section>
+
+<!--  <script src='http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js'></script>
+    <script>
+      $(document).foundation();
+      </script>-->
+</body>
+</html>

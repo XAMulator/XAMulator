@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="foundation/css/foundation.css" />
+  <link rel="stylesheet" href="foundation/css/normalize.css" />
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <script src="countdown/countdown.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+
+
+  <div class="row">
+    <div class="callout panel">
+      <div style="float:right;">
+        <script type="application/javascript">
+          var myCountdown1 = new Countdown({
+            time: 0
+          });
+        </script>
+      </div>
+      <h3>Test #1234</h3>
+      <br/>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <h5 style="float:left; margin-left:50px;">Multiple Choice</h5>
+        </div>
+
+        <div class="large-6 columns">
+          <h5 style="float:right; margin-right:50px;">Short Answer</h5>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="row">
+
+          <div class="large-6 columns">
+            <div class="panel">
+              <div class="large-2 columns">
+                <span class="round label">Question #1</span>
+              </div>
+              <div class="large-6 columns">
+                <p id="scrublord" onclick="Window.leaveKioskMode();">Which city is the capital of Kansas?</p>
+
+              </div>
+              <script>
+                var gui = require('nw.gui');
+                var Window = gui.Window.get();
+                var markdown = require('markdown').markdown;
+                Window.enterKioskMode();
+                Window.setAlwaysOnTop(true);
+                Window.on("blur", function () {
+                  Window.focus();
+                });
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://127.0.0.1:8000", false);
+                xhr.send(1234);
+
+                function taketest(testid) {
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", "http://127.0.0.1:8001", false);
+                  xhr.send(1234);
+                  test = JSON.parse(xhr.response);
+                  document.querySelector("#scrublord").innerHTML += "<dt>" + test.test[0]["question"] + "</dt>";
+                  for (aKey in test.test[0]["answers"]) {
+                    document.querySelector("#scrublord").innerHTML += "<dd onclick='this.style.color=\"#ff0000\"'>Answer: " + test.test[0]["answers"][aKey] + "</dd>";
+                  }
+                }
+                taketest(1234)
+              </script>
+              <div class="large-4 columns">
+                <!--<input type="text" placeholder="Answer...">-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="panel">
+          jdklfjkldsajfkdsa
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

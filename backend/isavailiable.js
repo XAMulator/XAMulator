@@ -9,13 +9,14 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-http.createSever(function(req, res) {
+http.createServer(function(req, res) {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	var data = "";
 	req.on("data", function(e) {
 		data += e;
 	});
 	req.on("end", function() {
-		connection.query("SELECT * FROM tests WHERE P_Id=" + e + " LIMIT 1", function(err, rows, fields) {
+		connection.query("SELECT * FROM tests WHERE P_Id=" + data + " LIMIT 1", function(err, rows, fields) {
 			res.writeHead(200);
 			delete rows[0].P_Id;
 			delete rows[0].O_Id;

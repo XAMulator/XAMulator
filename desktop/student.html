@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="foundation/css/foundation.css"/>
+  <link rel="stylesheet" href="foundation/css/normalize.css"/>
+
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <script src="countdown/countdown.js" type="text/javascript"></script>
+  <div style="float:right; margin-top:15px; margin-right:25px;"><script type="application/javascript">var myCountdown1 = new Countdown({time:0});</script></div>
+  <div class="fixed">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">eTest</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+        </li>
+
+      </ul>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="#" class="medium radius button">Contact a Teacher</a></li>
+          <li class="active"></li>
+          <li class="has-dropdown">
+            <a href="#">More...</a>
+            <ul class="dropdown">
+              <li><a href="#">Account/Settings</a>
+              </li>
+              <li><a href="#" onclick="Window.leaveKioskMode();Window.close(true)">Logout & Close</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="active"><a href="#">Home</a>
+          </li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 columns">
+                <input type="text" placeholder="Search...">
+              </div>
+              <div class="large-4 columns">
+                <a href="#" class="alert button expand">Search</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <br/>
+  <br/>
+  <script>
+    var gui = require('nw.gui');
+    var Window = gui.Window.get();
+    var markdown = require('markdown').markdown;
+    Window.enterKioskMode();
+    Window.setAlwaysOnTop(true);
+    Window.on("blur", function () {
+      Window.focus();
+    });
+  </script>
+
+<br/>
+<br/>
+  <div class="row">
+  <br/>
+    <div class="large-12 columns">
+      <!--<a class="small round button" onclick="Window.leaveKioskMode();Window.close(true)">Close</a>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="panel">
+        <h4>Upcoming Tests</h4>
+        <br/>
+        <div class="row">
+          <div class="large-4 columns">
+        <p style="display:none;"><script type="text/javascript">
+          // var xhr = new XMLHttpRequest();
+          // xhr.open("POST", "http://127.0.0.1:8000", false);
+          // xhr.send(1234);
+          // if (JSON.parse(xhr.response).testAvailable == 1) {
+            document.write("<a href='taketest.html'>Test 1234</a>");
+          // } else {
+          //   document.write("No tests available");
+          // }
+        </script></p>
+        <a class="small round button" href="taketest.html">Test 1234</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 2345</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 3456</a>
+        </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="large-4 columns">
+        <p style="display:none;"><script type="text/javascript">
+          // var xhr = new XMLHttpRequest();
+          // xhr.open("POST", "http://127.0.0.1:8000", false);
+          // xhr.send(1234);
+          // if (JSON.parse(xhr.response).testAvailable == 1) {
+            document.write("<a href='taketest.html'>Test 1234</a>");
+          // } else {
+          //   document.write("No tests available");
+          // }
+        </script></p>
+        <a class="small round button" href="#">Test 4321</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 5432</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 6543</a>
+        </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="large-4 columns">
+        <p style="display:none;"><script type="text/javascript">
+          // var xhr = new XMLHttpRequest();
+          // xhr.open("POST", "http://127.0.0.1:8000", false);
+          // xhr.send(1234);
+          // if (JSON.parse(xhr.response).testAvailable == 1) {
+            document.write("<a href='taketest.html'>Test 1234</a>");
+          // } else {
+          //   document.write("No tests available");
+          // }
+        </script></p>
+        <a class="small round button" href="#">Test 9876</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 7777</a>
+        </div>
+        <div class="large-4 columns">
+        <a class="small round button" href="#">Test 2048</a>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-6 columns">
+      <div class="panel">
+        <h4>Completed Test Reports</h4>
+        <br/>
+        <div class="row">
+          <div class="large-4 columns">
+            <a class="small round success button" href="#">Test 1111</a>
+          </div>
+          <div class="large-3 columns">
+            <p>Taken: 4/15/14"
+          </div>
+          <div class="large-5 columns">
+             <p>Grade Received: 98%</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 columns">
+            <a class="small round alert button" href="#">Test 2222</a>
+          </div>
+          <div class="large-3 columns">
+            <p>Taken: 4/16/14"
+          </div>
+          <div class="large-5 columns">
+             <p>Grade Received: 72%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="foundation/js/vendor/jquery.js"></script>
+  <script src="foundation/js/foundation.min.js"></script> 
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+
+</html>
