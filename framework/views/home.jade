@@ -28,54 +28,12 @@ block rightBar
 
 
 block pageContent
-  .sticky
-    .row
-      .large-12.columns
-        h1 Dashboard
+  .row
+    .large-12.columns
+      h1 Dashboard
   .row
     .large-12.columns
       .panel
-        .row
-          .callout.panel
-            .row
-              .large-3.columns
-                center
-                  h4 Question Type
-                select
-                  option(value='sa') Short Answer
-                  option(value='mc') Multiple Choice
-                  option(value='matching') Matching
-                  option(value='fuck') Other
-              .large-7.columns
-                center
-                  h4 Question Info
-                .row
-                  .large-12.columns
-                    .row.collapse
-                      .small-2.columns
-                        span.prefix Question:
-                      .small-10.columns
-                        input(type='text', placeholder='e.g. How big is China...?')
-                .row
-                  .large-12.columns
-                    .row.collapse
-                      .small-2.columns
-                        span.prefix Answer:
-                      .small-10.columns
-                        input(type='text', placeholder='e.g. Very Small... (Seperate Multiple Answers with Commas)')
-              .large-2.columns
-                .row
-                  .large-12.columns
-                    a
-                      h4(stlye='float:right;', align='right')
-                        font(color='F21111') &times;
-                    .row.collapse
-                      .small-5.columns
-                        span.prefix Worth
-                      .small-4.columns
-                        input(type='text', placeholder='')
-                      .small-3.columns
-                        span.postfix Pts.
         div(ng-repeat='question in questions')
           .form-group
             .row
@@ -84,10 +42,10 @@ block pageContent
                   .large-3.columns
                     center
                       h4 Question Type
-                    select
-                      option(value='mc') Multiple Choice
-                      option(value='sa') Short Answer
-                      option(value='matching') Matching
+                    select.question-type
+                      option(value='mtpl') Multiple Choice
+                      option(value='shrt') Short Answer
+                      option(value='mtch') Matching
                       option(value='fuck') Other
                   .large-7.columns
                     center
@@ -167,5 +125,5 @@ block pageContent
                           .small-3.columns
                             span.postfix Pts.
           br
-        a.large.radius.button
-          button.btn(type='button', ng-click='newQuestion()') Add Question
+        center
+          a.medium.radius.button(ng-click='newQuestion()') Add Question

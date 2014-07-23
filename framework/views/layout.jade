@@ -5,12 +5,13 @@
 doctype html
 html(ng-app='ngAddApp', lang='en')
   head.no-js
-    title= "INSERT NAME HERE"
+    title= "eTest"
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='stylesheets/foundation.css')
     link(rel='stylesheet', type='text/css', href='stylesheets/slick.css')
     link(href='http://fonts.googleapis.com/css?family=Oswald:500,300', rel='stylesheet', type='text/css')
+    link(rel='icon', type='image/png', href='/img/favicon.png')
   body(ng-controller='MainCtrl')
     block navBar
       .fixed
@@ -18,7 +19,7 @@ html(ng-app='ngAddApp', lang='en')
           ul.title-area
             li.name
               h1
-                a(href='#') #{appname}
+                a(href='#') eTest
             //
                Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
             li.toggle-topbar.menu-icon
@@ -52,11 +53,15 @@ html(ng-app='ngAddApp', lang='en')
     //These are populated by extension views
     block pageTitle
     block pageContent
-
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js')
-    script(src='button.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
+<<<<<<< HEAD
+    script(src='questions.js', deferred='')
+    script(src='button.js', deferred='')
     script
       $(document).foundation();
+=======
+    script $(document).foundation();
+>>>>>>> origin/master
