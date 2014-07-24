@@ -11,7 +11,7 @@ function addListener (reference){
 
   $(".question-type")[reference].onchange = function () {
     console.log(this.value);
-    changeQuestionType(this.value, reference + 1);
+    changeQuestionType(this.value, reference + 2);
   }
 };
 var ngAddApp = angular.module("ngAddApp", []);

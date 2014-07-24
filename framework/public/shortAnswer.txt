@@ -6,10 +6,11 @@
       <div class="large-3 columns">
         <center>
           <h4>Question Type</h4>
-        </center>
+        </center> 
         <select class="question-type"> 
-          <option value="stan">Short Answer</option>
-          <option value="mltc">Multiple Choice</option>
+          
+          <option value="shrt">Short Answer</option>
+          <option value="mtpl">Multiple Choice</option>
           <option value="mtch">Matching</option>
           <option value="othr">Other</option>
         </select>

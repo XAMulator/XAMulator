@@ -1,6 +1,6 @@
 var questionHTML = {
 
-		"mtpl": '',
+		"mtpl": 'multipleChoice.txt',
 		"shrt": "shortAnswer.txt", 
 		"mtch": '',
 		"fuck": ''
@@ -11,8 +11,14 @@ function changeQuestionType(value, index){
 				console.log(value, index)
 				console.log(questionHTML[value]);
 				$(".ng-scope").eq(index).load(questionHTML[value]);
+				setTimeout(function () {
+					$(".ng-scope").eq(index).find(".question-type")[0].onchange = function () {
+						console.log(this.value);
+	    				changeQuestionType(this.value,  index);
+				}; //logic is fucked up
+			}, 100);
+		};
 
-	}
 	}; 
 
 (function() {
