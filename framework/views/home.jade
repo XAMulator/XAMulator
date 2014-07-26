@@ -35,7 +35,8 @@ block pageContent
     .large-12.columns
       .panel
         div(ng-repeat='question in questions')
-          .form-group
+
+          form.form-group
             .row
               .callout.panel
                 .row
@@ -71,11 +72,10 @@ block pageContent
                               option(value='five') 5
                             center
                               h6 Correct Answer
-                            select
-                              option(value='a') A
-                              option(value='b') B
-                              option(value='c') C
-                              option(value='d') D
+                                select
+                                  div(ng-repeat='answer in answers')
+                                    .form-group
+                                      option(value='a') A
                           .small-9.columns
                             .row
                               .large-12.columns
@@ -104,7 +104,7 @@ block pageContent
                                   .small-2.columns
                                     span.prefix D:
                                   .small-10.columns
-                                    input(type='text', placeholder='Dick')
+                                    input(type='text', placeholder='Daikon')
                   .large-2.columns
                     a
                       h4(stlye='float:right;', align='right')
