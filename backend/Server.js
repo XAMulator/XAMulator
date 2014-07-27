@@ -1,6 +1,12 @@
+// TODO: Rewrite all SQL to use prepared statements. See: https://github.com/felixge/node-mysql#escaping-query-values
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+
+function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
 
 var connection = mysql.createConnection({
 	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
@@ -19,15 +25,15 @@ app.post("/createtest/", function(request, response) {
 	console.log(request.body);
 	var body = JSON.parse(request.body);
 	connection.query("INSERT INTO tests VALUES (" + 
-												body.P_Id + ', "' +
-												body.name + '",' +
-												body.totalPoints + ', \'' +
-												body.DatetimeCreated + '\',' +
-												body.DatetimeTest + ',' + 
-												body.testAvailable + ',' +
-												body.ForeignKey + ',' +
-												body.randomnized + ',"' +
-												body.examtime + '")');
+												connection.escape(body.P_Id) + ', "' +
+												connection.escape(body.name) + '",' +
+												connection.escape(body.totalPoints) + ', \'' +
+												connection.escape(body.datetimeCreated) + '\',' +
+												connection.escape(body.datetimeTest) + ',' + 
+												connection.escape(body.testAvailable) + ',' +
+												connection.escape(body.foreignKey) + ',' +
+												connection.escape(body.randomnized) + ',"' +
+												connection.escape(body.examtime) + '")');
 	// body.questions.forEach(function (e){
 		// connection.query("INSERT INTO questions VALUES (" +
 														// e.P_Id + ',' +
@@ -43,7 +49,7 @@ app.post("/createtest/", function(request, response) {
 });
 // Login
 app.post("/login/", function(request, response) {
-	connection.query("SELECT * FROM students WHERE username='" + request.body.username + "'". function(err, rows, fields) {
+	connection.query("SELECT * FROM students WHERE username='" + connection.escape(request.body.username) + "'". function(err, rows, fields) {
 		if (rows.length > 0) {
 			if (rows[0].password == request.body.password) {
 				// send auth token????
@@ -60,20 +66,22 @@ app.post("/taketest/", function(req, res) {
 	res.set("Access-Control-Allow-Origin", "*");
 	var body = req.body;
 	console.log(body);
-	connection.query("SELECT * FROM tests WHERE P_Id=" + body, function(err, rows, fields) {
+	connection.query("SELECT * FROM tests WHERE P_Id=" + connection.escape(body), function(err, rows, fields) {
 		if (rows.length > 0) {
-			console.log(rows[0]);
 			if (rows[0].testAvailable) {
-				console.log("test aval");
-				connection.query("SELECT * FROM questions WHERE test=" + body, function(err, rows, field) {
+				var isRandomized = rows[0].randomnized;
+				connection.query("SELECT * FROM questions WHERE test=" + connection.escape(body), function(err, rows, field) {
 					var questionArray = [];
 					rows.forEach(function(e) {
 						console.log(e);
 						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON), "type": e.questiontype});
 					});
 					// parse test and send test here.
-					
-					res.send(JSON.stringify({"error": null, "test": questionArray}));
+					if (!isRandomized) {
+						res.send(JSON.stringify({"error": null, "test": questionArray}));
+					} else {
+						res.send(JSON.stringify({"error": null, "test": shuffle(questionArray)}));
+					}
 				});
 			} else {
 				console.log("test not aval");
@@ -90,7 +98,7 @@ app.post("/taketest/", function(req, res) {
 app.post("/checkstatus/", function(req, res) {
 	res.set("Access-Control-Allow-Origin", "*");
 	var body = req.body;
-	connection.query("SELECT * FROM tests WHERE P_Id=" + data + " LIMIT 1", function(err, rows, fields) {
+	connection.query("SELECT * FROM tests WHERE P_Id=" + connection.escape(data) + " LIMIT 1", function(err, rows, fields) {
 		res.writeHead(200);
 		delete rows[0].P_Id;
 		delete rows[0].O_Id;
@@ -101,7 +109,7 @@ app.post("/gradetest/", function(req, res) {
 	var body = req.body;
 	// Get answers
 	var answerArr = [];
-	connection.query("SELECT * FROM questions WHERE test=" + body.testId, function(err, rows, fields) {
+	connection.query("SELECT * FROM questions WHERE test=" + connection.escape(body.testId), function(err, rows, fields) {
 		rows.forEach(function(row) {
 			answerArr.push(row);
 		});
@@ -132,7 +140,7 @@ app.post("/gradetest/", function(req, res) {
 	}
 	// Mock storing into DB
 	/*
-	* connection.query("INSERT INTO TABLE ??? VALUES (" + totalPoints + ", " + body.studentId + ")");
+	* connection.query("INSERT INTO TABLE ??? VALUES (" + connection.escape(totalPoints) + ", " + connection.escape(body.studentId) + ")");
 	*/
 });
 app.listen(8000);
