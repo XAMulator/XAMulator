@@ -42,11 +42,11 @@
 					var questionNumber = 0;
 					function addQuestion(question) {
 						var questionRow = document.createElement("div");
-						questionRow.className = "row";
+						questionRow.className = "large-12 columns";
 						var questionContent = document.createElement("div");
 						questionContent.className = "large-12 columns";
 						var questionPanel = document.createElement("div");
-						questionPanel.className = "panel";
+						questionPanel.className = "panel row";
 						var questionTitle = document.createElement("div");
 						questionTitle.className = "large-2 columns";
 						questionTitle.innerHTML = "<span class='round label'>Question #" + (questionNumber + 1) + "</span>";
@@ -78,13 +78,6 @@
 						addQuestion(question);
 					});
 				</script>
-			</div>
-			<div class="row">
-				<div class="panel">
-					jdklfjkldsajfkdsa
-				</div>
-
-
 			</div>
 		</div>
 	</div>
