@@ -9,7 +9,7 @@ var path = require('path');
 var override = require('method-override');
 
 var routes = require('./routes');
-var home = require('./routes/home.js');
+var newtest = require('./routes/newtest.js');
 var app = express();
 
 // all environments
@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/home', home.index);
+app.get('/newtest', newtest.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
