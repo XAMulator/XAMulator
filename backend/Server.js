@@ -54,7 +54,7 @@ app.post("/createtest/", function(request, response) {
 });
 // Login
 app.post("/login/", function(request, response) {
-	connection.query("SELECT * FROM students WHERE username='" + connection.escape(request.body.username) + "'". function(err, rows, fields) {
+	connection.query("SELECT * FROM students WHERE username='" + connection.escape(request.body.username) + "'", function(err, rows, fields) {
 		if (rows.length > 0) {
 			if (rows[0].password == request.body.password) {
 				// send auth token????
@@ -70,7 +70,6 @@ app.post("/login/", function(request, response) {
 app.post("/taketest/", function(req, res) {
 	res.set("Access-Control-Allow-Origin", "*");
 	var body = req.body;
-	console.log(body);
 	connection.query("SELECT * FROM tests WHERE P_Id=" + connection.escape(body), function(err, rows, fields) {
 		if (rows.length > 0) {
 			if (rows[0].testAvailable) {
@@ -78,7 +77,6 @@ app.post("/taketest/", function(req, res) {
 				connection.query("SELECT * FROM questions WHERE test=" + connection.escape(body), function(err, rows, field) {
 					var questionArray = [];
 					rows.forEach(function(e) {
-						console.log(e);
 						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON), "type": e.questiontype});
 					});
 					// parse test and send test here.
@@ -89,11 +87,9 @@ app.post("/taketest/", function(req, res) {
 					}
 				});
 			} else {
-				console.log("test not aval");
 				res.send('{"error": "test not available"}');
 			}
 		} else {
-			console.log("test not aval2");
 			res.send("{\"error\": \"test not found\"}");
 		}
 	});
@@ -118,7 +114,7 @@ app.post("/gradetest/", function(req, res) {
 		rows.forEach(function(row) {
 			answerArr.push(row);
 		});
-	}
+	});
 	// Get student responses <-- implement after we manage to store student responses somehow.
 	var studentRes = ["foo", "bar"];
 	// populate array with T or F based on correct/incorrect

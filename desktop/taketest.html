@@ -18,6 +18,9 @@
 						time: 0
 					});
 					var testNumber = location.search.substring(1, location.search.length);
+					if (location.search == "") {
+						alert("no test number after URL found. You probably crashed the server, noob.");
+					}
 					var xhr = new XMLHttpRequest();
 					xhr.open("POST", "http://127.0.0.1:8000/taketest/", false);
 					xhr.send(testNumber);
