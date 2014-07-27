@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var http = require('http');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -14,7 +13,8 @@ connection.connect();
 var app = express();
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded());
-app.post("/", function(request, response) {
+// Create test
+app.post("/createtest/", function(request, response) {
 	response.set("Access-Control-Allow-Origin", "*");
 	console.log(request.body);
 	var body = JSON.parse(request.body);
@@ -41,6 +41,7 @@ app.post("/", function(request, response) {
 														// e.wrongAnswerPoints + ',' + ')' )});
 	response.send("asdf");
 });
+// Login
 app.post("/login/", function(request, response) {
 	connection.query("SELECT * FROM students WHERE username='" + request.body.username + "'". function(err, rows, fields) {
 		if (rows.length > 0) {
@@ -53,5 +54,47 @@ app.post("/login/", function(request, response) {
 	});
 	request.body.username;
 	request.body.password;
+});
+// Get test questions
+app.post("/taketest/", function(req, res) {
+	res.set("Access-Control-Allow-Origin", "*");
+	var body = req.body;
+	console.log(body);
+	connection.query("SELECT * FROM tests WHERE P_Id=" + body, function(err, rows, fields) {
+		if (rows.length > 0) {
+			console.log(rows[0]);
+			if (rows[0].testAvailable) {
+				console.log("test aval");
+				connection.query("SELECT * FROM questions WHERE test=" + body, function(err, rows, field) {
+					var questionArray = [];
+					rows.forEach(function(e) {
+						console.log(e);
+						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON), "type": e.questiontype});
+					});
+					// parse test and send test here.
+					
+					res.send(JSON.stringify({"error": null, "test": questionArray}));
+				});
+			} else {
+				console.log("test not aval");
+				res.send('{"error": "test not available"}');
+			}
+		} else {
+			console.log("test not aval2");
+			res.send("{\"error\": \"test not found\"}");
+		}
+	});
+
+});
+// Check test status
+app.post("/checkstatus/", function(req, res) {
+	res.set("Access-Control-Allow-Origin", "*");
+	var body = req.body;
+	connection.query("SELECT * FROM tests WHERE P_Id=" + data + " LIMIT 1", function(err, rows, fields) {
+		res.writeHead(200);
+		delete rows[0].P_Id;
+		delete rows[0].O_Id;
+		res.send(JSON.stringify(rows[0]));
+	});
 });
 app.listen(8000);
