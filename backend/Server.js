@@ -13,6 +13,7 @@ connection.connect();
 
 var app = express();
 app.use(bodyParser.text());
+app.use(bodyParser.urlencoded());
 app.post("/", function(request, response) {
 	response.set("Access-Control-Allow-Origin", "*");
 	console.log(request.body);
@@ -39,5 +40,18 @@ app.post("/", function(request, response) {
 														// e.noAnswerPoints + ',' +
 														// e.wrongAnswerPoints + ',' + ')' )});
 	response.send("asdf");
+});
+app.post("/login/", function(request, response) {
+	connection.query("SELECT * FROM students WHERE username='" + request.body.username + "'". function(err, rows, fields) {
+		if (rows.length > 0) {
+			if (rows[0].password == request.body.password) {
+				// send auth token????
+			}
+		} else {
+			response.send('{"error": "no such user found"}');
+		}
+	});
+	request.body.username;
+	request.body.password;
 });
 app.listen(8000);

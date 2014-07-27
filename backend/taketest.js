@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 app.use(bodyParser.text());
-app.post("/", function(req, res) {
+app.post("/taketest/", function(req, res) {
 	res.set("Access-Control-Allow-Origin", "*");
 	var body = req.body;
 	console.log(body);
@@ -26,7 +26,7 @@ app.post("/", function(req, res) {
 					var questionArray = [];
 					rows.forEach(function(e) {
 						console.log(e);
-						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON)});
+						questionArray.push({"question": e.questionContent, "answers": JSON.parse(e.answersJSON), "type": e.questiontype});
 					});
 					// parse test and send test here.
 					
@@ -43,4 +43,4 @@ app.post("/", function(req, res) {
 	});
 
 });
-app.listen(8001);
+app.listen(8000);
