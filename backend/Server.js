@@ -97,4 +97,42 @@ app.post("/checkstatus/", function(req, res) {
 		res.send(JSON.stringify(rows[0]));
 	});
 });
+app.post("/gradetest/", function(req, res) {
+	var body = req.body;
+	// Get answers
+	var answerArr = [];
+	connection.query("SELECT * FROM questions WHERE test=" + body.testId, function(err, rows, fields) {
+		rows.forEach(function(row) {
+			answerArr.push(row);
+		});
+	}
+	// Get student responses <-- implement after we manage to store student responses somehow.
+	var studentRes = ["foo", "bar"];
+	// populate array with T or F based on correct/incorrect
+	var corrections = [];
+	for (var i = 0; i < studentRes.length; i++) {
+		if (e[i] == answerArr[i].correctAnswer) {
+			corrections[i] = true;
+		} else if (e[i] == null) {
+			corrections[i] = null;
+		} else {
+			corrections[i] = false;
+		}
+	}
+	// Add up all the points and store into DB.
+	var totalPoints = 0;
+	for (var i = 0; i < corrections.length; i++) {
+		if (corrections[i]) {
+			totalPoints += answerArr[i].fullPoints;
+		} else if (corrections[i] == null) {
+			totalPoints += answerArr[i].noAnswerPoints;
+		} else {
+			totalPoints -= answerArr[i].wrongAnswerPoints;
+		}
+	}
+	// Mock storing into DB
+	/*
+	* connection.query("INSERT INTO TABLE ??? VALUES (" + totalPoints + ", " + body.studentId + ")");
+	*/
+});
 app.listen(8000);
