@@ -1,4 +1,5 @@
 // TODO: Rewrite all SQL to use prepared statements. See: https://github.com/felixge/node-mysql#escaping-query-values
+// TROLL EDIT FTW
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
