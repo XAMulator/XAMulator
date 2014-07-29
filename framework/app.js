@@ -164,6 +164,6 @@ if ('development' == app.get('env')) {
   app.use(expressErrorHandler({server: server}));
 }
 
-app.listen(app.get("port"), function() {
+server.listen(app.get("port"), function() {
 	console.log("server listening on port " + app.get("port"));
 });
