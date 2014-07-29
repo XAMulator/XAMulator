@@ -36,16 +36,16 @@ function shuffle(array) {
     }
     return array;
 }
-
-app.get('/', routes.index);
-app.get('/newtest', newtest.index);
-app.post('/newtest', function(request, response) {
-	var connection = mysql.createConnection({
+var connection = mysql.createConnection({
 	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
 	user: "angelhack",
 	password: "angelhack",
 	database: "testing"
-	});
+});
+
+app.get('/', routes.index);
+app.get('/newtest', newtest.index);
+app.post('/newtest', function(request, response) {
 	connection.connect();
 	response.set("Access-Control-Allow-Origin", "*");
 	console.log("Connected to Database")
@@ -160,9 +160,9 @@ app.post("/gradetest/", function(req, res) {
 
 server = http.createServer(app);
 // development only
-if ('development' == app.get('env')) {
-  app.use(expressErrorHandler({server: server}));
-}
+// if ('development' == app.get('env')) {
+  // app.use(expressErrorHandler({server: server}));
+// }
 
 server.listen(app.get("port"), function() {
 	console.log("server listening on port " + app.get("port"));
