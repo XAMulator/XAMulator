@@ -161,7 +161,7 @@ app.post("/gradetest/", function(req, res) {
 server = http.createServer(app);
 // development only
 if ('development' == app.get('env')) {
-  app.use(expressErrorHandler({server: server});
+  app.use(expressErrorHandler({server: server}));
 }
 
 app.listen(app.get("port"), function() {
