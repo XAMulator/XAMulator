@@ -1,3 +1,6 @@
+//TO AVOID THE PAIN OF USING THIS SHITTY PROGRAM
+//SIMPLY DOWNLOAD MYSQL WORKBENCH AND HAVE AN
+//ENTIRE WORKING SUITE TO USE
 var mysql = require('mysql');
 var readline = require("readline");
 

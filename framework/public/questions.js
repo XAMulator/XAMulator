@@ -8,12 +8,12 @@ var questionHTML = {
 function changeQuestionType(value, index){
 
 			if (document.readyState == "complete"){
-				console.log(value, index)
-				console.log(questionHTML[value]);
+				//console.log(value, index)
+				//console.log(questionHTML[value]);
 				$(".ng-scope").eq(index).load(questionHTML[value]);
 				setTimeout(function () {
 					$(".ng-scope").eq(index).find(".question-type")[0].onchange = function () {
-						console.log(this.value);
+						//console.log(this.value);
 	    				changeQuestionType(this.value,  index);
 				}; //logic is fucked up
 			}, 100);
@@ -40,8 +40,8 @@ function changeQuestionType(value, index){
 		for (var i = 0; i < document.getElementsByClassName("question-type").length; i++) {
 		console.log("one");
 		document.getElementsByClassName("question-type")[i].onchange = function() {
-			console.log(this.value);
-			console.log(i);
+			//console.log(this.value);
+			//console.log(i);
 			changeQuestionType(this.value, i + 1); //logic is fucked up
 		};
 	}
