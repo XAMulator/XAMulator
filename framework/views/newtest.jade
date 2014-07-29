@@ -17,7 +17,7 @@ block rightBar
         ul.clearing-thumbs.small-block-grid-4(data-clearing='data-clearing')
           li
             a(href='img/folderpic.jpg')
-              img(data-caption='File 1', src='img/folderpic.jpg')
+              img(data-caption='File 1', src='img/folderpic.jpg') 
           li
             a(href='img/folderpic.jpg')
               img(data-caption='File 2', src='img/folderpic.jpg')
@@ -33,7 +33,7 @@ br
 block pageContent
   .row
     .large-12.columns
-      h1 Dashboard
+      h1(style='padding-top:40px') Dashboard
     br
   .row
     .large-12.columns
@@ -131,4 +131,6 @@ block pageContent
             br
           center
             a.medium.radius.button(ng-click='newQuestion()') Add Question
-            input(name ="submit" value="Submit" type="submit")
+  .row
+    .large-12.columns
+      input(name ="submit" value="Submit" type="submit" style='width:100%')
