@@ -9,26 +9,24 @@ var path = require('path');
 var override = require('method-override');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-
+var expressLogger = require('express-logger');
+var expressErrorHandler = require("express-error-handler");
 var routes = require('./routes');
 var newtest = require('./routes/newtest.js');
 var app = express();
+var server;
 
 // all environments
 app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(logger({path: 'logs/log.txt'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -159,4 +157,13 @@ app.post("/gradetest/", function(req, res) {
 	* connection.query("INSERT INTO TABLE ??? VALUES (" + connection.escape(totalPoints) + ", " + connection.escape(body.studentId) + ")");
 	*/
 });
-app.listen(app.get("port"));
+
+server = http.createServer(app);
+// development only
+if ('development' == app.get('env')) {
+  app.use(expressErrorHandler({server: server});
+}
+
+app.listen(app.get("port"), function() {
+	console.log("server listening on port " + app.get("port"));
+});
