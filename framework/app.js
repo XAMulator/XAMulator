@@ -158,6 +158,5 @@ app.post("/gradetest/", function(req, res) {
 	/*
 	* connection.query("INSERT INTO TABLE ??? VALUES (" + connection.escape(totalPoints) + ", " + connection.escape(body.studentId) + ")");
 	*/
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
 });
+app.listen(app.get("port"));
