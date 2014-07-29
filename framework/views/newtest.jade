@@ -38,7 +38,7 @@ block pageContent
   .row
     .large-12.columns
       .panel
-        form(action="teacherTestSubmission.js")#newtestCreation
+        form(action="/newtest" method="post")#newtestCreation
           div(ng-repeat='question in questions')
             .form-group
               .row

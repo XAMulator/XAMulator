@@ -26,7 +26,7 @@ var app = express();
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded());
 // Create test
-app.post("/createtest/", function(request, response) {
+app.post("/newtest/", function(request, response) {
 	response.set("Access-Control-Allow-Origin", "*");
 	console.log(request.body);
 	var body = JSON.parse(request.body);
