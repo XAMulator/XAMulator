@@ -4537,14 +4537,18 @@ input[type="submit"] {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #008cba;
+  background-color: #61B359;
   border-color: #007095;
   color: white;
   border-radius: 3px;
-  input:hover, button:focus, .button:hover, .button:focus {
-    background-color: #007095; }
-  button:hover, button:focus, .button:hover, .button:focus {
-    color: white; }
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus{
+    background-color: #416E3D; }
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus, .input[type="submit"]:hover, .input[type="submit"]:focus {
+    color: white;
 }
 
 /* Respect enforced amount of rows for textarea */
