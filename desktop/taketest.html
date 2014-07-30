@@ -1,6 +1,18 @@
 <!doctype html>
 <html>
-
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
+<!-- KEN SEE LINE 83 -->
 <head>
 	<link rel="stylesheet" href="foundation/css/foundation.css" />
 	<link rel="stylesheet" href="foundation/css/normalize.css" />
@@ -67,6 +79,12 @@
 								}
 								questionNumber++;
 								break;
+							case "shrt":
+								questionAnswer.innerHTML += "<textarea class='error' placeholder='Answer here...'>"; // KEN DO YOUR STYLING HERE
+								questionNumber++;
+								break;
+							default:
+								console.error("LOLWUT");
 						}
 						questionPanel.appendChild(questionTitle);
 						questionPanel.appendChild(questionQuestion);
