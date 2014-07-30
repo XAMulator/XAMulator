@@ -4,12 +4,11 @@ block bodyContent
     .jumbotron
       h1= eTest
   block pageContent
-    br
-    br
+    .sm.spacer
     .row
       .large-12.columns
         h1 eTest Teacher's Portal
-        br
+        .sm.spacer
     .row
       .large-12.columns
         .panel
@@ -25,13 +24,13 @@ block bodyContent
               #teacherModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
                 h3
                   center Sign In
-                br
+                .sm.spacer
                 .row
                   .large-6.columns
                     .callout.panel
                       h4
                         center Register
-                      br
+                      .sm.spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -53,17 +52,16 @@ block bodyContent
                               span.prefix Password:
                             .small-9.columns
                               input(type='text', placeholder='Password...')
-                      br
+                      .spacer
                       center
                         a.medium.round.success.button(href='#') Submit
-                        br
+                        .spacer
                   .large-6.columns
                     .callout.panel
-                      br
-                      br
+                      .spacer
                       h4
                         center Already Registered?
-                      br
+                      .spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -71,7 +69,7 @@ block bodyContent
                               span.prefix Username/Email:
                             .small-9.columns
                               input(type='text', placeholder='User/Email...')
-                      br
+                      .spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -79,10 +77,10 @@ block bodyContent
                               span.prefix Password:
                             .small-9.columns
                               input(type='text', placeholder='Password...')
-                      br
+                      .spacer
                       center
                         a.medium.round.success.button(href='#') Login
-                        br
+                        .spacer
                 a.close-reveal-modal &times;
             .large-6.medium-6.columns
               center
@@ -95,13 +93,13 @@ block bodyContent
               #studentModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
                 h3
                   center Sign In
-                br
+                .sm.spacer
                 .row
                   .large-6.columns
                     .callout.panel
                       h4
                         center Register
-                      br
+                      .sm.spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -123,17 +121,16 @@ block bodyContent
                               span.prefix Password:
                             .small-9.columns
                               input(type='text', placeholder='Password...')
-                      br
+                      .small.spacer
                       center
                         a.medium.round.success.button(href='#') Submit
-                        br
+                        .sm.spacer
                   .large-6.columns
                     .callout.panel
-                      br
-                      br
+                      .spacer
                       h4
                         center Already Registered?
-                      br
+                      .sm.spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -141,7 +138,7 @@ block bodyContent
                               span.prefix Username/Email:
                             .small-9.columns
                               input(type='text', placeholder='User/Email...')
-                      br
+                      .sm.spacer
                       .row
                         .large-12.columns
                           .row.collapse
@@ -149,10 +146,10 @@ block bodyContent
                               span.prefix Password:
                             .small-9.columns
                               input(type='text', placeholder='Password...')
-                      br
+                      .sm.spacer
                       center
                         a.medium.round.success.button(href='#') Login
-                        br
+                        .sm.spacer
                 a.close-reveal-modal &times;
           .row
             .large-12.columns
