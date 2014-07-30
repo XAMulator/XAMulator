@@ -18,6 +18,11 @@
     "jade": "*",
     "nib": "^1.0.3",
     "stylus": "*",
-    "method-override": "*"
+    "method-override": "*",
+    "mysql": "*",
+    "serve-favicon": "*",
+    "express-error-handler": "*",
+    "express-logger": "*",
+    "body-parser": "*"
   }
 }
