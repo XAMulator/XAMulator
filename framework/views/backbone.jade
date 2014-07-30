@@ -1,0 +1,26 @@
+//
+  backbone.jade defines the backbone of the website.
+  The head and script declarations are all in here.
+  All pages should extend backbone in some fashion.
+
+doctype html
+html(ng-app='ngAddApp', lang='en')
+  head.no-js
+    title= "eTest"
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.css')
+    link(rel='stylesheet', href='css/ken.css')
+    link(href='http://fonts.googleapis.com/css?family=Oswald:500,300', rel='stylesheet', type='text/css')
+    link(rel='icon', type='image/png', href='/img/favicon.png')
+  body(ng-controller='MainCtrl')
+    block bodyContent
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
+
+    script(src='questions.js', deferred='')
+    script(src='button.js', deferred='')
+    scritp(src='teacherTestSubmission.js')
+    script($(document).foundation();)
