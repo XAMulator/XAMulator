@@ -19,7 +19,7 @@
 					});
 					var testNumber = location.search.substring(1, location.search.length);
 					if (location.search == "") {
-						alert("server issue");
+						alert("no test number after URL found. You probably crashed the server, noob.");
 					}
 					var xhr = new XMLHttpRequest();
 					xhr.open("POST", "http://127.0.0.1:8000/taketest/", false);
@@ -58,9 +58,6 @@
 						questionQuestion.innerHTML = "<p>" + question['question'] + "</p>";
 						var questionAnswer = document.createElement("div");
 						questionAnswer.className = "large-4 columns";
-						var temp = document.createElement("textarea");
-						temp.className = "error";
-						temp.placeholder="Answer here..."
 						switch (question["type"]) {
 							case "mtpl":
 								var answerNumber = 0;
