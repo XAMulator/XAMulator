@@ -1,0 +1,276 @@
+
+<!--
+Layout.jade defines the layout of the website. It contains the navbar and
+extension views will populate pageTitle and pageContent blocks
+
+--><!DOCTYPE html>
+<html ng-app="ngAddApp" lang="en">
+  <head class="no-js">
+    <title>INSERT NAME HERE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/foundation.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/slick.css">
+    <link href="http://fonts.googleapis.com/css?family=Oswald:500,300" rel="stylesheet" type="text/css">
+  </head>
+  <body ng-controller="MainCtrl">
+    <div class="fixed">
+      <nav data-topbar="data-topbar" class="top-bar">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#"></a></h1>
+          </li>
+          <!--Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+          -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="right">
+            <!--Right Nav Section
+            -->
+            <li class="active"><a href="#" class="medium radius button">Add a Test</a></li>
+            <li class="divider"></li>
+            <li class="active"><a href="#" data-reveal-id="firstModal" class="medium radius button">View All Tests</a></li>
+            <div id="firstModal" style="position: absolute; float: left;" data-reveal="data-reveal" class="reveal-modal">
+              <div class="row">
+                <div class="large-12 columns">
+                  <h2>View All Tests</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <ul data-clearing="data-clearing" class="clearing-thumbs small-block-grid-4">
+                    <li><a href="img/folderpic.jpg"><img data-caption="File 1" src="img/folderpic.jpg"></a></li>
+                    <li><a href="img/folderpic.jpg"><img data-caption="File 2" src="img/folderpic.jpg"></a></li>
+                    <li><a href="img/folderpic.jpg"><img data-caption="File 3" src="img/folderpic.jpg"></a></li>
+                  </ul>
+                </div>
+              </div><a class="close-reveal-modal">&times;</a>
+            </div>
+            <li class="has-dropdown"><a href="#">Login/Logout</a>
+              <ul class="dropdown">
+                <li><a href="#">First link in dropdown</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--Left Nav Section
+          -->
+          <ul class="left">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/home">Portal</a></li>
+            <li class="divider"></li>
+            <li class="has-form">
+              <div class="row collapse">
+                <div class="large-8 columns">
+                  <input type="text" placeholder="Search...">
+                </div>
+                <div class="large-4 columns"><a href="#" class="alert button expand">Search</a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div><br><br>
+    <!--These are populated by extension views-->
+    <div class="sticky">
+      <div class="row">
+        <div class="large-12 columns">
+          <h1>Dashboard</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel">
+          <div class="row">
+            <div class="callout panel">
+              <div class="row">
+                <div class="large-3 columns">
+                  <center>
+                    <h4>Question Type</h4>
+                  </center>
+                  <select> 
+                    <option value="stan">Short Answer</option>
+                    <option value="mltc">Multiple Choice</option>
+                    <option value="mtch">Matching</option>
+                    <option value="othr">Other</option>
+                  </select>
+                </div>
+                <div class="large-7 columns">
+                  <center>
+                    <h4>Question Info</h4>
+                  </center>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <div class="row collapse">
+                        <div class="small-2 columns"><span class="prefix">Question:</span></div>
+                        <div class="small-10 columns">
+                          <input type="text" placeholder="e.g. How big is China...?">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <div class="row collapse">
+                        <div class="small-2 columns"><span class="prefix">Answer:</span></div>
+                        <div class="small-10 columns">
+                          <input type="text" placeholder="e.g. Very Small... (Seperate Multiple Answers with Commas)">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="large-2 columns">
+                  <div class="row">
+                    <div class="large-12 columns"><a>
+                        <h4 stlye="float:right;" align="right"><font color="F21111">&times;</font></h4></a>
+                      <div class="row collapse">
+                        <div class="small-5 columns"><span class="prefix">Worth</span></div>
+                        <div class="small-4 columns">
+                          <input type="text" placeholder="">
+                        </div>
+                        <div class="small-3 columns"><span class="postfix">Pts.</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-repeat="question in questions">
+            <div class="form-group">
+              <div class="row">
+                <div class="callout panel">
+                  <div id="test" class="row">
+                    <div class="large-3 columns">
+                      <center>
+                        <h4>Question Type</h4>
+                      </center>
+                      <select id="question-type">
+                        <option value="mptc">Multiple Choice</option>
+                        <option value="shta">Short Answer</option>
+                        <option value="mtch">Matching</option>
+                        <option value="fuck">Other</option>
+                      </select>
+                    </div>
+                    <div class="large-7 columns">
+                      <center>
+                        <h4>Question Info</h4>
+                      </center>
+                      <div class="row">
+                        <div class="large-12 columns">
+                          <div class="row collapse">
+                            <div class="small-2 columns"><span class="prefix">Question:</span></div>
+                            <div class="small-10 columns">
+                              <input type="text" placeholder="e.g. How big is China?" ng-model="item.text" class="form-control medform">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="large-12 columns">
+                          <div class="row collapse">
+                            <div class="small-2 columns"><br>
+                              <center>
+                                <h6>#Answer Choices</h6>
+                              </center>
+                              <select>
+                                <option value="two">2</option>
+                                <option value="three">3</option>
+                                <option value="four">4</option>
+                                <option value="five">5</option>
+                              </select>
+                              <center>
+                                <h6>Correct Answer</h6>
+                              </center>
+                              <select>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                              </select>
+                            </div>
+                            <div class="small-9 columns">
+                              <div class="row">
+                                <div class="large-12 columns">
+                                  <div class="row collapse">
+                                    <div class="small-2 columns"><span class="prefix">A:</span></div>
+                                    <div class="small-10 columns">
+                                      <input type="text" placeholder="Apple">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="large-12 columns">
+                                  <div class="row collapse">
+                                    <div class="small-2 columns"><span class="prefix">B:</span></div>
+                                    <div class="small-10 columns">
+                                      <input type="text" placeholder="Banana">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="large-12 columns">
+                                  <div class="row collapse">
+                                    <div class="small-2 columns"><span class="prefix">C:</span></div>
+                                    <div class="small-10 columns">
+                                      <input type="text" placeholder="Carrot">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="large-12 columns">
+                                  <div class="row collapse">
+                                    <div class="small-2 columns"><span class="prefix">D:</span></div>
+                                    <div class="small-10 columns">
+                                      <input type="text" placeholder="Dick">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="large-2 columns"><a>
+                        <h4 stlye="float:right;" align="right"><font color="F21111">&times;</font></h4></a>
+                      <div class="row"><br><br>
+                        <div class="large-12 columns">
+                          <center>
+                            <input id="checkbox1" type="checkbox">
+                            <label for="random">Randomize?</label>
+                          </center>
+                        </div>
+                        <div class="large-12 columns">
+                          <div class="row collapse">
+                            <div class="small-5 columns"><span class="prefix">Worth</span></div>
+                            <div class="small-4 columns">
+                              <input type="text" placeholder="">
+                            </div>
+                            <div class="small-3 columns"><span class="postfix">Pts.</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+          </div><a class="large radius button">
+            <button type="button" ng-click="newQuestion()" class="btn">Add Question</button></a>
+        </div>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+    <script src="button.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/modernizr.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/vendor/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js"></script>
+    <script>$(document).foundation();</script>
+  </body>
+</html>
