@@ -61,7 +61,7 @@ block pageContent
                             .small-2.columns
                               span.prefix Question:
                             .small-10.columns
-                              input.form-control.medform(type='text', placeholder='e.g. How big is China?', ng-model='item.text')
+                              input.form-control.medform(name="question" type='text', placeholder='e.g. How big is China?', ng-model='item.text')
                       .row
                         .large-12.columns
                           .row.collapse
@@ -70,10 +70,10 @@ block pageContent
                               center
                                 h6 # Answer Choices
                               select(form="newtestCreation" name="amtAnswers")
-                                option(value='two') 2
-                                option(value='three') 3
-                                option(value='four') 4
-                                option(value='five') 5
+                                option(value='2') 2
+                                option(value='3') 3
+                                option(value='4') 4
+                                option(value='5') 5
                               center
                                 h6 Correct Answer
                                   select
@@ -131,6 +131,7 @@ block pageContent
             br
           center
             a.medium.radius.button(ng-click='newQuestion()') Add Question
-  .row
-    .large-12.columns
-      input(name ="submit" value="Submit" type="submit" style='width:100%')
+           
+          .row
+            .large-12.columns
+            input(name ="submit" value="Submit" type="submit" style='width:100%')

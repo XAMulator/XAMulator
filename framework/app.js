@@ -46,12 +46,14 @@ var connection = mysql.createConnection({
 app.get('/', routes.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
-	connection.connect();
+	// connection.connect();
+	// connection.end();
 	response.set("Access-Control-Allow-Origin", "*");
-	console.log("Connected to Database")
+	console.log("disConnected to Database")
 	console.log(request.body);
-	response.json(request.body); //Temporary
+	response.json(request.body); //Temporary`
 	console.log(typeof request.body);
+
 
 	//connection.query("INSERT INTO tests VALUES (" + 
 	// 											connection.escape(body.P_Id) + ', "' +
@@ -63,7 +65,7 @@ app.post('/newtest', function(request, response) {
 	// 											connection.escape(body.foreignKey) + ',' +
 	// 											connection.escape(body.randomnized) + ',"' +
 	// 											connection.escape(body.examtime) + '")');
-	connection.end();
+
 });
 
 app.post("/login/", function(request, response) {
