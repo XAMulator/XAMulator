@@ -62,9 +62,13 @@
 							case "mtpl":
 								var answerNumber = 0;
 								for (aKey in question["answers"]) {
-									questionAnswer.innerHTML += "<p onclick='this.style.color=\"#ff0000\";answers[" + questionNumber + "] = parseInt(this.attributes.name.value)' name=" + answerNumber + ">Answer: " + question["answers"][aKey] + "</p>";
+									questionAnswer.innerHTML += "<label><input type='radio' name=" + questionNumber + " answerNumber=" + answerNumber + " onclick='answers[" + questionNumber + "] = parseInt(this.attributes.answerNumber);'>" + question["answers"][aKey] + "</label><br>";
 									answerNumber++;
 								}
+								questionNumber++;
+								break;
+							case "shrt":
+								questionAnswer.innerHTML += "<textarea class='error' placeholder='Answer here...'>"; // KEN DO YOUR STYLING HERE
 								questionNumber++;
 								break;
 						}
