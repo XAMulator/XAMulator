@@ -21,6 +21,7 @@ app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(logger({path: 'logs/log.txt'}));
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 // app.use(app.router); <-- THIS ISN'T EXPRESS 3.X
