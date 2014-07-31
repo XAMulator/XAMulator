@@ -74,7 +74,7 @@
 							case "mtpl":
 								var answerNumber = 0;
 								for (aKey in question["answers"]) {
-									questionAnswer.innerHTML += "<label><input type='radio' name=" + questionNumber + " answerNumber=" + answerNumber + " onclick='answers[" + questionNumber + "] = parseInt(this.attributes.answerNumber);'>" + question["answers"][aKey] + "</label><br>";
+									questionAnswer.innerHTML += "<input type='radio'><label>terrible radios</label><br>";
 									answerNumber++;
 								}
 								questionNumber++;
