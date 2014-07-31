@@ -22,7 +22,7 @@
 						alert("no test number after URL found. You probably crashed the server, noob.");
 					}
 					var xhr = new XMLHttpRequest();
-					xhr.open("POST", "http://127.0.0.1:8000/taketest/", false);
+					xhr.open("POST", "http://127.0.0.1:1337/taketest/", false);
 					xhr.send(testNumber);
 					var test = JSON.parse(xhr.response);
 					var answers = [];
