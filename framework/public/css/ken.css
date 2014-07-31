@@ -43,15 +43,3 @@ h1, h2, h3, h4, h5, h6 {
 
 .label {
   font-family: 'Oswald', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
-
-.spacer {
-  padding: 15pt;
-}
-
-.sm.spacer {
-  padding: 5pt;
-}
-
-input[type="submit"] {
-  width: 100%;
-}
