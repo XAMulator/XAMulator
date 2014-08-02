@@ -80,7 +80,7 @@ app.post("/login/", function(request, response) {
 				// send auth token????
 			}
 		} else {
-			response.send('{"error": "no such user found"}');
+			response.json({"error": "no such user found"});
 		}
 	});
 	request.body.username;
@@ -101,16 +101,16 @@ app.post("/taketest/", function(req, res) {
 					});
 					// parse test and send test here.
 					if (!isRandomized) {
-						res.send(JSON.stringify({"error": null, "test": questionArray}));
+						res.json({"error": null, "test": questionArray});
 					} else {
-						res.send(JSON.stringify({"error": null, "test": shuffle(questionArray)}));
+						res.json({"error": null, "test": shuffle(questionArray)});
 					}
 				});
 			} else {
-				res.send('{"error": "test not available"}');
+				res.json({"error": "test not available"});
 			}
 		} else {
-			res.send("{\"error\": \"test not found\"}");
+			res.json({"error": "test not found"});
 		}
 	});
 
@@ -123,7 +123,7 @@ app.post("/checkstatus/", function(req, res) {
 		res.writeHead(200);
 		delete rows[0].P_Id;
 		delete rows[0].O_Id;
-		res.send(JSON.stringify(rows[0]));
+		res.json(rows[0]);
 	});
 });
 app.post("/gradetest/", function(req, res) {
