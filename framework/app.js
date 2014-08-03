@@ -57,26 +57,26 @@ app.post('/newtest', function(request, response) {
   console.log(request.body);
   //connection.query("INSERT INTO tests ")
 
-  var limit;
-  var currentAnswersCounted = -1;
-  if (typeof(request.body.questionChoice) === "string"){
-    limit = 1;
-  } else {
-    limit = request.body.questionChoice.length
-  }
+  // var limit;
+  // var currentAnswersCounted = -1;
+  // if (typeof(request.body.questionChoice) === "string"){
+    // limit = 1;
+  // } else {
+    // limit = request.body.questionChoice.length
+  // }
 
-  for (var i = 0; i < limit; i++){
-    connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, 
-                                           test, fullPoints, noAnswerPoints wrongAnswerPoints, isRandomnized) 
-                      VALUES (" +
-                              connection.escape(request.body.questionChoice[i]) + ", " +
-                              connection.escape(request.body.question[i]) + ", " +
-                              connection.escape(JSON.stringify(request.body.question[currentAnswersCounter+i])) + ", " +
-                              connection.escape(()) + ", " +
-                              connection.escape('1234') + ", " + //TESTING
-                              connection.escape(requets.body.points[i]) + ")" );
-    }
-    currentAnswersCounter += i;
+  // for (var i = 0; i < limit; i++){
+    // connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, 
+                                           // test, fullPoints, noAnswerPoints wrongAnswerPoints, isRandomnized) 
+                      // VALUES (" +
+                              // connection.escape(request.body.questionChoice[i]) + ", " +
+                              // connection.escape(request.body.question[i]) + ", " +
+                              // connection.escape(JSON.stringify(request.body.question[currentAnswersCounter+i])) + ", " +
+                              // connection.escape(()) + ", " +
+                              // connection.escape('1234') + ", " + //TESTING
+                              // connection.escape(requets.body.points[i]) + ")" );
+    // }
+    // currentAnswersCounter += i;
 
 });
 

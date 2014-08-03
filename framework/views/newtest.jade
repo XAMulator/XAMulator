@@ -1,137 +1,138 @@
 extends layout
 
 block rightBar
-  //
-     Right Nav Section
-  li.active
-    a.medium.radius.button(href='#' style='top:5.5px') Add a Test
-  li.divider(style='padding-left:5px;padding-right:5px;background:#333333;border-right:0px')
-  li.active
-    a.medium.radius.button(href='#', data-reveal-id='firstModal' style='top:5.5px;') View All Tests
-  #firstModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
-    .row
-      .large-12.columns
-        h2 View All Tests
-    .row
-      .large-12.columns
-        ul.clearing-thumbs.small-block-grid-4(data-clearing='data-clearing')
-          li
-            a(href='img/folderpic.jpg')
-              img(data-caption='File 1', src='img/folderpic.jpg')
-          li
-            a(href='img/folderpic.jpg')
-              img(data-caption='File 2', src='img/folderpic.jpg')
-          li
-            a(href='img/folderpic.jpg')
-              img(data-caption='File 3', src='img/folderpic.jpg')
-    a.close-reveal-modal &times;
+	//
+		 Right Nav Section
+	li.active
+		a.medium.radius.button(href='#' style='top:5.5px') Add a Test
+	li.divider(style='padding-left:5px;padding-right:5px;background:#333333;border-right:0px')
+	li.active
+		a.medium.radius.button(href='#', data-reveal-id='firstModal' style='top:5.5px;') View All Tests
+	#firstModal.reveal-modal(style='position: absolute; float: left;', data-reveal='data-reveal')
+		.row
+			.large-12.columns
+				h2 View All Tests
+		.row
+			.large-12.columns
+				ul.clearing-thumbs.small-block-grid-4(data-clearing='data-clearing')
+					li
+						a(href='img/folderpic.jpg')
+							img(data-caption='File 1', src='img/folderpic.jpg')
+					li
+						a(href='img/folderpic.jpg')
+							img(data-caption='File 2', src='img/folderpic.jpg')
+					li
+						a(href='img/folderpic.jpg')
+							img(data-caption='File 3', src='img/folderpic.jpg')
+		a.close-reveal-modal &times;
 
 br
 br
 br
 
 block pageContent
-  .row
-    .large-12.columns
-      h1(style='padding-top:40px') Dashboard
-    br
-  .row
-    .large-12.columns
-      .panel
-        form(action='/newtest' method='post' id = "newtestCreation")
-          div(ng-repeat='question in questions')
-            .form-group
-              .row
-                .callout.panel
-                  .row
-                    .large-3.columns
-                      center
-                        h4 Question Type
-                      select(form='newtestCreation' name='questionType' class="question-type")
-                        option(value='mtpl') Multiple Choice
-                        option(value='shrt') Short Answer
-                        option(value='mtch') Matching
-                        option(value='othr') Other
-                    .large-7.columns
-                      center
-                        h4 Question Info
-                      .row
-                        .large-12.columns
-                          .row.collapse
-                            .small-2.columns
-                              span.prefix Question:
-                            .small-10.columns
-                              input.form-control.medform(name='question' type='text', placeholder='e.g. How big is China?', ng-model='item.text')
-                      .row
-                        .large-12.columns
-                          .row.collapse
-                            .small-2.columns
-                              br
-                              center
-                                h6 # Answer Choices
-                              select(form='newtestCreation' name='amtAnswers')
-                                option(value='2') 2
-                                option(value='3') 3
-                                option(value='4') 4
-                                option(value='5') 5
-                              center
-                                h6 Correct Answer
-                                  select
-                                    div(ng-repeat='answer in answers')
-                                      .form-group
-                                        option(name='correctAnswer' value='a') A
-                            .small-9.columns
-                              .row
-                                .large-12.columns
-                                  .row.collapse
-                                    .small-2.columns
-                                      span.prefix A:
-                                    .small-10.columns
-                                      input(type='text', name='answer', placeholder='Apple')
-                              .row
-                                .large-12.columns
-                                  .row.collapse
-                                    .small-2.columns
-                                      span.prefix B:
-                                    .small-10.columns
-                                      input(type='text',name='answer', placeholder='Banana')
-                              .row
-                                .large-12.columns
-                                  .row.collapse
-                                    .small-2.columns
-                                      span.prefix C:
-                                    .small-10.columns
-                                      input(type='text',name='answer',placeholder='Carrot')
-                              .row
-                                .large-12.columns
-                                  .row.collapse
-                                    .small-2.columns
-                                      span.prefix D:
-                                    .small-10.columns
-                                      input(type='text', placeholder='Daikon')
-                    .large-2.columns
-                      a
-                        h4(stlye='float:right;', align='right')
-                          font(color='F21111') &times;
-                      .row
-                        br
-                        br
-                        .large-12.columns
-                          center
-                            input(id="checkbox1" name='randomnized' type='checkbox')
-                            label(for='random') Randomize?
-                        .large-12.columns
-                          .row.collapse
-                            .small-5.columns
-                              span.prefix Worth
-                            .small-4.columns
-                              input(name='points' type='text', placeholder='')
-                            .small-3.columns
-                              span.postfix Pts.
-            br
-          center
-            a.medium.radius.button(ng-click='newQuestion()') Add Question
+	.row
+		.large-12.columns
+			h1(style='padding-top:40px') Dashboard
+		br
+	.row
+		.large-12.columns
+			.panel
+				script(src="js/newtest.js")
+				form(action='/newtest' method='post' onsubmit='return sendQuestionsToServer()' id = "newtestCreation")
+					div(ng-repeat='question in questions')
+						.form-group
+							.row
+								.callout.panel
+									.row
+										.large-3.columns
+											center
+												h4 Question Type
+											select(form='newtestCreation' name='questionType' class="question-type")
+												option(value='mtpl') Multiple Choice
+												option(value='shrt') Short Answer
+												option(value='mtch') Matching
+												option(value='othr') Other
+										.large-7.columns
+											center
+												h4 Question Info
+											.row
+												.large-12.columns
+													.row.collapse
+														.small-2.columns
+															span.prefix Question:
+														.small-10.columns
+															input.form-control.medform(name='question' type='text', placeholder='e.g. How big is China?', ng-model='item.text')
+											.row
+												.large-12.columns
+													.row.collapse
+														.small-2.columns
+															br
+															center
+																h6 # Answer Choices
+															select(form='newtestCreation' name='amtAnswers')
+																option(value='2') 2
+																option(value='3') 3
+																option(value='4') 4
+																option(value='5') 5
+															center
+																h6 Correct Answer
+																	select(form='newtestCreation' name='correctAnswer')
+																		div(ng-repeat='answer in answers')
+																			.form-group
+																				option(value='a') A
+														.small-9.columns
+															.row
+																.large-12.columns
+																	.row.collapse
+																		.small-2.columns
+																			span.prefix A:
+																		.small-10.columns
+																			input(type='text', name='answer', placeholder='Apple')
+															.row
+																.large-12.columns
+																	.row.collapse
+																		.small-2.columns
+																			span.prefix B:
+																		.small-10.columns
+																			input(type='text',name='answer', placeholder='Banana')
+															.row
+																.large-12.columns
+																	.row.collapse
+																		.small-2.columns
+																			span.prefix C:
+																		.small-10.columns
+																			input(type='text',name='answer',placeholder='Carrot')
+															.row
+																.large-12.columns
+																	.row.collapse
+																		.small-2.columns
+																			span.prefix D:
+																		.small-10.columns
+																			input(type='text', placeholder='Daikon')
+										.large-2.columns
+											a
+												h4(stlye='float:right;', align='right')
+													font(color='F21111') &times;
+											.row
+												br
+												br
+												.large-12.columns
+													center
+														input(id="checkbox1" name='randomnized' type='checkbox')
+														label(for='random') Randomize?
+												.large-12.columns
+													.row.collapse
+														.small-5.columns
+															span.prefix Worth
+														.small-4.columns
+															input(name='points' type='number', placeholder='')
+														.small-3.columns
+															span.postfix Pts.
+						br
+					center
+						a.medium.radius.button(ng-click='newQuestion()') Add Question
 
-          .row
-            .large-12.columns
-            input(name='submit' value='Submit' type='submit' style='width:100%')
+					.row
+						.large-12.columns
+						input(name='submit' value='Submit' type='submit' style='width:100%')
