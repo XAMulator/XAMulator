@@ -3,7 +3,7 @@ var questionHTML = {
 		"mtpl": '../partials/multipleChoice.html',
 		"shrt": '../partials/shortAnswer.html',
 		"mtch": '../partials/matching.html',
-		"fuck": '../partials/fuck.html'
+		"othr": '../partials/othr.html'
 	};
 function changeQuestionType(value, index){
 

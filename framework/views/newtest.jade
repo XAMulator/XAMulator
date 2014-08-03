@@ -38,7 +38,7 @@ block pageContent
   .row
     .large-12.columns
       .panel
-        form(action='/newtest' method='post')#newtestCreation
+        form(action='/newtest' method='post' id = "newtestCreation")
           div(ng-repeat='question in questions')
             .form-group
               .row
@@ -47,11 +47,11 @@ block pageContent
                     .large-3.columns
                       center
                         h4 Question Type
-                      select(form='newtestCreation' name='questionChoice').question-type
+                      select(form='newtestCreation' name='questionType' class="question-type")
                         option(value='mtpl') Multiple Choice
                         option(value='shrt') Short Answer
                         option(value='mtch') Matching
-                        option(value='fuck') Other
+                        option(value='othr') Other
                     .large-7.columns
                       center
                         h4 Question Info
@@ -118,7 +118,7 @@ block pageContent
                         br
                         .large-12.columns
                           center
-                            input#checkbox1(name='randomnized' type='checkbox')
+                            input(id="checkbox1" name='randomnized' type='checkbox')
                             label(for='random') Randomize?
                         .large-12.columns
                           .row.collapse

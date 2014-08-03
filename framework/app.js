@@ -46,30 +46,37 @@ var connection = mysql.createConnection({
   password: "angelhack",
   database: "testing"
 });
+connection.connect();
 
 app.get('/', routes.index);
 app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
-  // connection.connect();
-  // connection.end();
   response.set("Access-Control-Allow-Origin", "*");
-  console.log("Disconnected from Database")
+  console.log("Connected to Database")
   console.log(request.body);
-  response.json(request.body); //Temporary
-  console.log(typeof request.body);
+  //connection.query("INSERT INTO tests ")
 
+  var limit;
+  var currentAnswersCounted = -1;
+  if (typeof(request.body.questionChoice) === "string"){
+    limit = 1;
+  } else {
+    limit = request.body.questionChoice.length
+  }
 
-  //connection.query("INSERT INTO tests VALUES (" +
-  //                      connection.escape(body.P_Id) + ', "' +
-  //                      connection.escape(body.name) + '",' +
-  //                      connection.escape(body.totalPoints) + ', \'' +
-  //                      connection.escape(body.datetimeCreated) + '\',' +
-  //                      connection.escape(body.datetimeTest) + ',' +
-  //                      connection.escape(body.testAvailable) + ',' +
-  //                      connection.escape(body.foreignKey) + ',' +
-  //                      connection.escape(body.randomnized) + ',"' +
-  //                      connection.escape(body.examtime) + '")');
+  for (var i = 0; i < limit; i++){
+    connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, 
+                                           test, fullPoints, noAnswerPoints wrongAnswerPoints, isRandomnized) 
+                      VALUES (" +
+                              connection.escape(request.body.questionChoice[i]) + ", " +
+                              connection.escape(request.body.question[i]) + ", " +
+                              connection.escape(JSON.stringify(request.body.question[currentAnswersCounter+i])) + ", " +
+                              connection.escape(()) + ", " +
+                              connection.escape('1234') + ", " + //TESTING
+                              connection.escape(requets.body.points[i]) + ")" );
+    }
+    currentAnswersCounter += i;
 
 });
 
