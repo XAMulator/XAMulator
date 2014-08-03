@@ -1,10 +1,10 @@
 var questionHTML = {
 
-		"mtpl": 'multipleChoice.txt',
-		"shrt": "shortAnswer.txt", 
-		"mtch": '',
-		"fuck": ''
-	};	
+		"mtpl": '../partials/multipleChoice.html',
+		"shrt": '../partials/shortAnswer.html',
+		"mtch": '../partials/matching.html',
+		"fuck": '../partials/fuck.html'
+	};
 function changeQuestionType(value, index){
 
 			if (document.readyState == "complete"){
@@ -19,11 +19,11 @@ function changeQuestionType(value, index){
 			}, 100);
 		};
 
-	}; 
+	};
 
 (function() {
 
-	
+
 	// for (var i = 0; i < $(".question-type").length; i++){
 	// 	console.log('hi');
 	// 	console.log($(".question-type")[i]);

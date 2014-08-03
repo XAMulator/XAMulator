@@ -30,7 +30,7 @@ var ngAddApp = angular.module("ngAddApp", []);
         }, 100)
 
       };
-  
+
       $scope.answers = [ {} ]; //array of destination address boxes
       $scope.newAnswer = function () {
         $scope.answers.push( {} );

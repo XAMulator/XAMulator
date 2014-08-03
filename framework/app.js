@@ -54,9 +54,9 @@ app.post('/newtest', function(request, response) {
   // connection.connect();
   // connection.end();
   response.set("Access-Control-Allow-Origin", "*");
-  console.log("disConnected to Database")
+  console.log("Disconnected from Database")
   console.log(request.body);
-  response.json(request.body); //Temporary`
+  response.json(request.body); //Temporary
   console.log(typeof request.body);
 
 

@@ -4,7 +4,7 @@ block rightBar
   //
      Right Nav Section
   li.active
-    a.medium.radius.button(href='#' style="top:5.5px") Add a Test
+    a.medium.radius.button(href='#' style='top:5.5px') Add a Test
   li.divider(style='padding-left:5px;padding-right:5px;background:#333333;border-right:0px')
   li.active
     a.medium.radius.button(href='#', data-reveal-id='firstModal' style='top:5.5px;') View All Tests
@@ -38,7 +38,7 @@ block pageContent
   .row
     .large-12.columns
       .panel
-        form(action="/newtest" method="post")#newtestCreation
+        form(action='/newtest' method='post')#newtestCreation
           div(ng-repeat='question in questions')
             .form-group
               .row
@@ -47,7 +47,7 @@ block pageContent
                     .large-3.columns
                       center
                         h4 Question Type
-                      select(form="newtestCreation" name="questionChoice").question-type
+                      select(form='newtestCreation' name='questionChoice').question-type
                         option(value='mtpl') Multiple Choice
                         option(value='shrt') Short Answer
                         option(value='mtch') Matching
@@ -61,7 +61,7 @@ block pageContent
                             .small-2.columns
                               span.prefix Question:
                             .small-10.columns
-                              input.form-control.medform(name="question" type='text', placeholder='e.g. How big is China?', ng-model='item.text')
+                              input.form-control.medform(name='question' type='text', placeholder='e.g. How big is China?', ng-model='item.text')
                       .row
                         .large-12.columns
                           .row.collapse
@@ -69,7 +69,7 @@ block pageContent
                               br
                               center
                                 h6 # Answer Choices
-                              select(form="newtestCreation" name="amtAnswers")
+                              select(form='newtestCreation' name='amtAnswers')
                                 option(value='2') 2
                                 option(value='3') 3
                                 option(value='4') 4
@@ -79,7 +79,7 @@ block pageContent
                                   select
                                     div(ng-repeat='answer in answers')
                                       .form-group
-                                        option(name="correctAnswer" value='a') A
+                                        option(name='correctAnswer' value='a') A
                             .small-9.columns
                               .row
                                 .large-12.columns
@@ -87,21 +87,21 @@ block pageContent
                                     .small-2.columns
                                       span.prefix A:
                                     .small-10.columns
-                                      input(type='text', name="answer", placeholder='Apple')
+                                      input(type='text', name='answer', placeholder='Apple')
                               .row
                                 .large-12.columns
                                   .row.collapse
                                     .small-2.columns
                                       span.prefix B:
                                     .small-10.columns
-                                      input(type='text',name="answer", placeholder='Banana')
+                                      input(type='text',name='answer', placeholder='Banana')
                               .row
                                 .large-12.columns
                                   .row.collapse
                                     .small-2.columns
                                       span.prefix C:
                                     .small-10.columns
-                                      input(type='text',name="answer",placeholder='Carrot')
+                                      input(type='text',name='answer',placeholder='Carrot')
                               .row
                                 .large-12.columns
                                   .row.collapse
@@ -118,14 +118,14 @@ block pageContent
                         br
                         .large-12.columns
                           center
-                            input#checkbox1(name="randomnized" type='checkbox')
+                            input#checkbox1(name='randomnized' type='checkbox')
                             label(for='random') Randomize?
                         .large-12.columns
                           .row.collapse
                             .small-5.columns
                               span.prefix Worth
                             .small-4.columns
-                              input(name="points" type='text', placeholder='')
+                              input(name='points' type='text', placeholder='')
                             .small-3.columns
                               span.postfix Pts.
             br
@@ -134,4 +134,4 @@ block pageContent
 
           .row
             .large-12.columns
-            input(name ="submit" value="Submit" type="submit" style='width:100%')
+            input(name='submit' value='Submit' type='submit' style='width:100%')
