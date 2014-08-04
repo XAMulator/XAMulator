@@ -81,7 +81,6 @@ app.post('/newtest', function(request, response) {
     )
     answersCounted = answersCounted + i;
   }
-
 });
 
 app.post("/login/", function(request, response) {
