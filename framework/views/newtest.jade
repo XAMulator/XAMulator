@@ -39,7 +39,7 @@ block pageContent
 		.large-12.columns
 			.panel
 				script(src="js/newtest.js")
-				form(action='/newtest' method='post' onsubmit='return sendQuestionsToServer()' id = "newtestCreation")
+				form(action='/newtest' method='post' id = "newtestCreation")
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
