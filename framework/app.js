@@ -10,6 +10,7 @@ var override = require('method-override');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var logger = require('express-logger');
+var sprintf = require("sprintf-js").sprintf;
 var expressErrorHandler = require("express-error-handler");
 var routes = require('./routes');
 var test = require('./routes/test.js');
@@ -53,30 +54,33 @@ app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
   response.set("Access-Control-Allow-Origin", "*");
-  console.log("Connected to Database")
   console.log(request.body);
-  //connection.query("INSERT INTO tests ")
-
-  // var limit;
-  // var currentAnswersCounted = -1;
-  // if (typeof(request.body.questionChoice) === "string"){
-    // limit = 1;
-  // } else {
-    // limit = request.body.questionChoice.length
-  // }
-
-  // for (var i = 0; i < limit; i++){
-    // connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, 
-                                           // test, fullPoints, noAnswerPoints wrongAnswerPoints, isRandomnized) 
-                      // VALUES (" +
-                              // connection.escape(request.body.questionChoice[i]) + ", " +
-                              // connection.escape(request.body.question[i]) + ", " +
-                              // connection.escape(JSON.stringify(request.body.question[currentAnswersCounter+i])) + ", " +
-                              // connection.escape(()) + ", " +
-                              // connection.escape('1234') + ", " + //TESTING
-                              // connection.escape(requets.body.points[i]) + ")" );
-    // }
-    // currentAnswersCounter += i;
+  var body = request.body,
+      answersCounted = 0,
+      limit;
+  // body.forEach(function(e){
+  if (typeof(body.questionType) === "string"){
+    limit = 1;
+  } else {
+    limit = body.questionType.length;
+  }
+  for (var i = 0; i < limit; i++){
+    connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, test, fullPoints, noAnswerPoints, wrongAnswerPoints, isRandomnized) VALUES (" +
+                                  sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+                                          connection.escape(body.questionType[i]),
+                                          connection.escape(body.question[i]),
+                                          connection.escape(JSON.stringify(body.answer.slice(answersCounted, answersCounted + i))),
+                                          connection.escape(''),
+                                          connection.escape(1234),
+                                          connection.escape(''),
+                                          connection.escape(''),
+                                          connection.escape(''),
+                                          connection.escape('')
+                                         )
+                              + ");"
+    )
+    answersCounted = answersCounted + i;
+  }
 
 });
 
