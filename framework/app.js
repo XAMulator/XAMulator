@@ -9,6 +9,7 @@ var override = require('method-override');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var logger = require('express-logger');
+var sprintf = require("sprintf-js").sprintf;
 var expressErrorHandler = require("express-error-handler");
 var routes = require('./routes');
 var test = require('./routes/test.js');
@@ -45,31 +46,40 @@ var connection = mysql.createConnection({
   password: "angelhack",
   database: "testing"
 });
+connection.connect();
 
 app.get('/', routes.index);
 app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
-  // connection.connect();
-  // connection.end();
   response.set("Access-Control-Allow-Origin", "*");
-  console.log("Disconnected from Database")
   console.log(request.body);
-  response.json(request.body); //Temporary
-  console.log(typeof request.body);
-
-
-  //connection.query("INSERT INTO tests VALUES (" +
-  //                      connection.escape(body.P_Id) + ', "' +
-  //                      connection.escape(body.name) + '",' +
-  //                      connection.escape(body.totalPoints) + ', \'' +
-  //                      connection.escape(body.datetimeCreated) + '\',' +
-  //                      connection.escape(body.datetimeTest) + ',' +
-  //                      connection.escape(body.testAvailable) + ',' +
-  //                      connection.escape(body.foreignKey) + ',' +
-  //                      connection.escape(body.randomnized) + ',"' +
-  //                      connection.escape(body.examtime) + '")');
-
+  var body = request.body,
+      answersCounted = 0,
+      limit;
+  // body.forEach(function(e){
+  if (typeof(body.questionType) === "string"){
+    limit = 1;
+  } else {
+    limit = body.questionType.length;
+  }
+  for (var i = 0; i < limit; i++){
+    connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, test, fullPoints, noAnswerPoints, wrongAnswerPoints, isRandomnized) VALUES (" +
+                                  sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+                                          connection.escape(body.questionType[i]),
+                                          connection.escape(body.question[i]),
+                                          connection.escape(JSON.stringify(body.answer.slice(answersCounted, answersCounted + i))),
+                                          connection.escape(''),
+                                          connection.escape(1234),
+                                          connection.escape(''),
+                                          connection.escape(''),
+                                          connection.escape(''),
+                                          connection.escape('')
+                                         )
+                              + ");"
+    )
+    answersCounted = answersCounted + i;
+  }
 });
 
 app.post("/login/", function(request, response) {
