@@ -5,8 +5,8 @@ var mysql = require('mysql');
 var readline = require("readline");
 
 var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+	input: process.stdin,
+	output: process.stdout
 });
 
 var connection = mysql.createConnection({

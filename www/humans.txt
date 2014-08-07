@@ -13,6 +13,6 @@ Jonathan Zhang
 Kevin Zhou
 
 /* SITE */
-  Standards: HTML5, CSS3, JS, Node.js, Angular,js, Express.js, Jade
-  Components: Foundation
-  Software: Sublime, Atom, Git
+	Standards: HTML5, CSS3, JS, Node.js, Angular,js, Express.js, Jade
+	Components: Foundation
+	Software: Sublime, Atom, Git

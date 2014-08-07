@@ -14,7 +14,7 @@ function changeQuestionType(value, index){
 				setTimeout(function () {
 					$(".ng-scope").eq(index).find(".question-type")[0].onchange = function () {
 						//console.log(this.value);
-	    				changeQuestionType(this.value,  index);
+						changeQuestionType(this.value,  index);
 				}; //logic is fucked up
 			}, 100);
 		};
