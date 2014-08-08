@@ -1,128 +1,128 @@
 <div ng-repeat="question in questions" class="ng-scope">
-		<div class="form-group">
+	<div class="form-group">
+		<div class="row">
+			<div class="callout panel">
 				<div class="row">
-						<div class="callout panel">
-								<div class="row">
-										<div class="large-3 columns">
-												<center>
-														<h4>Question Type</h4>
-												</center>
-												<select form="newtestCreation" name="questionType" class="question-type">
-														<option value="mtpl">Multiple Choice</option>
-														<option value="shrt">Short Answer</option>
-														<option value="mtch">Matching</option>
-														<option value="othr">Other</option>
-												</select>
-										</div>
-										<div class="large-7 columns">
-												<center>
-														<h4>Question Info</h4>
-												</center>
-												<div class="row">
-														<div class="large-12 columns">
-																<div class="row collapse">
-																		<div class="small-2 columns"><span class="prefix">Question:</span>
-																		</div>
-																		<div class="small-10 columns">
-																				<input name="question" type="text" placeholder="e.g. How big is China?" ng-model="item.text" class="form-control medform ng-pristine ng-valid">
-																		</div>
-																</div>
-														</div>
-												</div>
-												<div class="row">
-														<div class="large-12 columns">
-																<div class="row collapse">
-																		<div class="small-2 columns">
-																				<br>
-																				<center>
-																						<h6># Answer Choices</h6>
-																				</center>
-																				<select form="newtestCreation" name="amtAnswers">
-																						<option value="2">2</option>
-																						<option value="3">3</option>
-																						<option value="4">4</option>
-																						<option value="5">5</option>
-																				</select>
-																				<center>
-																						<h6>Correct Answer<select><option name="correctAnswer" value="a">A</option></select></h6>
-																				</center>
-																		</div>
-																		<div class="small-9 columns">
-																				<div class="row">
-																						<div class="large-12 columns">
-																								<div class="row collapse">
-																										<div class="small-2 columns"><span class="prefix">A:</span>
-																										</div>
-																										<div class="small-10 columns">
-																												<input type="text" name="answer" placeholder="Apple">
-																										</div>
-																								</div>
-																						</div>
-																				</div>
-																				<div class="row">
-																						<div class="large-12 columns">
-																								<div class="row collapse">
-																										<div class="small-2 columns"><span class="prefix">B:</span>
-																										</div>
-																										<div class="small-10 columns">
-																												<input type="text" name="answer" placeholder="Banana">
-																										</div>
-																								</div>
-																						</div>
-																				</div>
-																				<div class="row">
-																						<div class="large-12 columns">
-																								<div class="row collapse">
-																										<div class="small-2 columns"><span class="prefix">C:</span>
-																										</div>
-																										<div class="small-10 columns">
-																												<input type="text" name="answer" placeholder="Carrot">
-																										</div>
-																								</div>
-																						</div>
-																				</div>
-																				<div class="row">
-																						<div class="large-12 columns">
-																								<div class="row collapse">
-																										<div class="small-2 columns"><span class="prefix">D:</span>
-																										</div>
-																										<div class="small-10 columns">
-																												<input type="text" placeholder="Daikon">
-																										</div>
-																								</div>
-																						</div>
-																				</div>
-																		</div>
-																</div>
-														</div>
-												</div>
-										</div>
-										<div class="large-2 columns"><a><h4 stlye="float:right;" align="right"><font color="F21111">×</font></h4></a>
-												<div class="row">
-														<br>
-														<br>
-														<div class="large-12 columns">
-																<center>
-																		<input id="checkbox1" name="randomnized" type="checkbox">
-																		<label for="random">Randomize?</label>
-																</center>
-														</div>
-														<div class="large-12 columns">
-																<div class="row collapse">
-																		<div class="small-5 columns"><span class="prefix">Worth</span>
-																		</div>
-																		<div class="small-4 columns">
-																				<input name="points" type="text" placeholder="">
-																		</div>
-																		<div class="small-3 columns"><span class="postfix">Pts.</span>
-																		</div>
-																</div>
-														</div>
-												</div>
-										</div>
+					<div class="large-3 columns">
+						<center>
+							<h4>Question Type</h4>
+						</center>
+						<select form="newtestCreation" name="questionType" class="question-type">
+							<option value="mtpl">Multiple Choice</option>
+							<option value="shrt">Short Answer</option>
+							<option value="mtch">Matching</option>
+							<option value="othr">Other</option>
+						</select>
+					</div>
+					<div class="large-7 columns">
+						<center>
+							<h4>Question Info</h4>
+						</center>
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="row collapse">
+									<div class="small-2 columns"><span class="prefix">Question:</span>
+									</div>
+									<div class="small-10 columns">
+										<input name="question" type="text" placeholder="e.g. How big is China?" ng-model="item.text" class="form-control medform ng-pristine ng-valid">
+									</div>
 								</div>
+							</div>
 						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="row collapse">
+									<div class="small-2 columns">
+										<br>
+										<center>
+											<h6># Answer Choices</h6>
+										</center>
+										<select form="newtestCreation" name="amtAnswers">
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+										<center>
+											<h6>Correct Answer<select><option name="correctAnswer" value="a">A</option></select></h6>
+										</center>
+									</div>
+									<div class="small-9 columns">
+										<div class="row">
+											<div class="large-12 columns">
+												<div class="row collapse">
+													<div class="small-2 columns"><span class="prefix">A:</span>
+													</div>
+													<div class="small-10 columns">
+														<input type="text" name="answer" placeholder="Apple">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="large-12 columns">
+												<div class="row collapse">
+													<div class="small-2 columns"><span class="prefix">B:</span>
+													</div>
+													<div class="small-10 columns">
+														<input type="text" name="answer" placeholder="Banana">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="large-12 columns">
+												<div class="row collapse">
+													<div class="small-2 columns"><span class="prefix">C:</span>
+													</div>
+													<div class="small-10 columns">
+														<input type="text" name="answer" placeholder="Carrot">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="large-12 columns">
+												<div class="row collapse">
+													<div class="small-2 columns"><span class="prefix">D:</span>
+													</div>
+													<div class="small-10 columns">
+														<input type="text" placeholder="Daikon">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="large-2 columns"><a><h4 stlye="float:right;" align="right"><font color="F21111">×</font></h4></a>
+						<div class="row">
+							<br>
+							<br>
+							<div class="large-12 columns">
+								<center>
+									<input id="checkbox1" name="randomnized" type="checkbox">
+									<label for="random">Randomize?</label>
+								</center>
+							</div>
+							<div class="large-12 columns">
+								<div class="row collapse">
+									<div class="small-5 columns"><span class="prefix">Worth</span>
+									</div>
+									<div class="small-4 columns">
+										<input name="points" type="text" placeholder="">
+									</div>
+									<div class="small-3 columns"><span class="postfix">Pts.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
 		</div>
-		<br>
+	</div>
+	<br>
 </div>
