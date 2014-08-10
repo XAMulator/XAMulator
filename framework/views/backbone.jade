@@ -21,7 +21,9 @@ html(ng-app='ngAddApp', lang='en')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js')
 		script(src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
 
-		script(src='js/questions.js', deferred='')
-		script(src='js/button.js', deferred='')
-		script(src='teacherTestSubmission.js')
-		script($(document).foundation();)
+		script(src='js/questions.js')
+		script(src='js/button.js')
+		//- script(src='teacherTestSubmission.js')
+		script
+			$(document).foundation();
+</script>
