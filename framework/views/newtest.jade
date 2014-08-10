@@ -37,9 +37,13 @@ block pageContent
 		br
 	.row
 		.large-12.columns
-			.panel
-				script(src="js/newtest.js")
-				form(action='/newtest' method='post' id = "newtestCreation")
+			script(src="js/newtest.js")
+			form(action='/newtest' method='post' id = "newtestCreation")
+				.panel
+				//input(type = "text" placeholder = "Test Points" name="testPoints")
+				//input(type = "text" id="datepicker" name="dateTest")
+				//input(type="radio" name="randomTestQuestions")
+				input(type="text" placeholder="Test Name" name="testName")
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
