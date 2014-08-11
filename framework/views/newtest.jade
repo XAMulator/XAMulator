@@ -40,14 +40,16 @@ block pageContent
 			form(action='/newtest' method='post' id = "newtestCreation")
 				.panel
 					.row
-						.large-8.columns
-							input(type="text" placeholder="Test Name" name="testName")
+						.large-7.columns
+							input(type='text' placeholder='Test Name' name='testName')
+						.large-3.columns
+							input(type='datetime-local' name='datetimeTest')
 						.large-2.columns
-							input(type = "text" id="datepicker" name="dateTest" placeholder="Date of Test")
-						.large-2.columns
-							input(type = "text" placeholder = "Test Points" name="testPoints")		
-					input(type="radio" name="RandomizeTestQuestions")
-					input(type="datetime-local" name="datetimeTest")
+							input(type="text" placeholder="Test Points" name="testPoints")	
+					.row	
+						input(id="yoloswag420blazeit" name='RandomizedTestQuestions' type='checkbox')
+							input(id="checkbox1" name='randomnized' type='checkbox')
+								label(for='random') Randomize?
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
