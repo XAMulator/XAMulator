@@ -53,6 +53,8 @@ app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
 	response.set("Access-Control-Allow-Origin", "*");
 	console.log(request.body);
+	response.json(request.body);
+	console.log(request.body);
 	var body = request.body,
 			answersCounted = 0,
 			limit,
@@ -62,8 +64,8 @@ app.post('/newtest', function(request, response) {
 																									connection.escape(body.testName),
 																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
 																									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
-																									connection.escape(body.dateTest), //Datepicker Needs to be implemented
-																									connection.escape((body.dateTest.parse() <= new Date().parse()) ? 0:1),//not tested
+																									connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
+																									connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
 																									connection.escape(''), //need to implement teacher id
 																									conneciton.escape(body.randomTestQuestions),
 																									connection.escape('')
