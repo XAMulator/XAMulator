@@ -90,7 +90,7 @@ app.post('/newtest', function(request, response) {
 																										connection.escape('') //isRandom
 																									 )
 															+ ");"
-		)
+		);
 		answersCounted = answersCounted + i;
 	}
 });
