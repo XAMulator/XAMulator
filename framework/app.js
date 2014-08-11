@@ -60,7 +60,7 @@ app.post('/newtest', function(request, response) {
 			limit,
 			testId; //need to implement way to retrieve testID
 
-	connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s", 
+	connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
 																									connection.escape(body.testName),
 																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
 																									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
@@ -86,7 +86,7 @@ app.post('/newtest', function(request, response) {
 																										connection.escape(JSON.stringify(body.answer.slice(answersCounted, answersCounted + i))), //answers
 																										connection.escape(body.correctAnswer[i]), //correctAnswer
 																										connection.escape(testId), //Test Foreign Key not null
-																										connection.escape(''), //Fullpoints 
+																										connection.escape(''), //Fullpoints
 																										connection.escape(''), //noAnswerPoints
 																										connection.escape(''), //wrongAnswerPoints
 																										connection.escape('') //isRandom
