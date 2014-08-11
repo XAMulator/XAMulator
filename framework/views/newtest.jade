@@ -37,16 +37,7 @@ block pageContent
 		br
 	.row
 		.large-12.columns
-<<<<<<< HEAD
-			script(src='js/newtest.js')
 			form#newtestCreation(action='/newtest' method='post')
-				.panel
-					input(type='text', placeholder='Test Points', name='testPoints')
-					input.datepicker(type='text', name='dateTest')
-					input(type='radio', name='randomTestQuestions')
-					input(type='text', placeholder='Test Name', name='testName')
-=======
-			form(action='/newtest' method='post' id = "newtestCreation")
 				.panel
 					.row
 						.large-7.columns
@@ -54,12 +45,11 @@ block pageContent
 						.large-3.columns
 							input(type='datetime-local' name='datetimeTest')
 						.large-2.columns
-							input(type="text" placeholder="Test Points" name="testPoints")	
-					.row	
+							input(type="text" placeholder="Test Points" name="testPoints")
+					.row
 						input(id="yoloswag420blazeit" name='RandomizedTestQuestions' type='checkbox')
-							input(id="checkbox1" name='randomnized' type='checkbox')
-								label(for='random') Randomize?
->>>>>>> 751c1a9a271d7ff574e04f91b5aa7cad6eb50830
+						input(id="checkbox1" name='randomnized' type='checkbox')
+						label(for='random') Randomize?
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
