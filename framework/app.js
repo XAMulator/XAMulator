@@ -63,7 +63,11 @@ app.post('/newtest', function(request, response) {
 																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
 																									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
 																									connection.escape(body.dateTest), //Datepicker Needs to be implemented
+<<<<<<< HEAD
 																									connection.escape((body.dateTest.parse() <= new Date().parse()) ? 0:1),//not tested
+=======
+																									connection.escape((body.dateTest.parse() <= new Date().parse()) ? 0 : 1), //not tested
+>>>>>>> FETCH_HEAD
 																									connection.escape(''), //need to implement teacher id
 																									conneciton.escape(body.randomTestQuestions),
 																									connection.escape('')
@@ -90,7 +94,7 @@ app.post('/newtest', function(request, response) {
 																										connection.escape('') //isRandom
 																									 )
 															+ ");"
-		)
+		);
 		answersCounted = answersCounted + i;
 	}
 });
