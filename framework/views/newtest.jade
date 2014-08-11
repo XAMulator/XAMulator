@@ -44,6 +44,7 @@ block pageContent
 					input(type="radio" name="randomTestQuestions")
 					input(type="text" placeholder="Test Name" name="testName")
 					input(type="text" placeholder="Test Date" name="testDate")
+					input(type="datetime-local" name="dateTimeTest")
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
