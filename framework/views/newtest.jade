@@ -37,13 +37,13 @@ block pageContent
 		br
 	.row
 		.large-12.columns
-			script(src="js/newtest.js")
-			form(action='/newtest' method='post' id = "newtestCreation")
+			script(src='js/newtest.js')
+			form#newtestCreation(action='/newtest' method='post')
 				.panel
-				//input(type = "text" placeholder = "Test Points" name="testPoints")
-				//input(type = "text" id="datepicker" name="dateTest")
-				//input(type="radio" name="randomTestQuestions")
-				//- input(type="text" placeholder="Test Name" name="testName")
+					input(type='text', placeholder='Test Points', name='testPoints')
+					input.datepicker(type='text', name='dateTest')
+					input(type='radio', name='randomTestQuestions')
+					input(type='text', placeholder='Test Name', name='testName')
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
@@ -52,7 +52,7 @@ block pageContent
 										.large-3.columns
 											center
 												h4 Question Type
-											select(form='newtestCreation' name='questionType' class="question-type")
+											select.question-type(form='newtestCreation' name='questionType')
 												option(value='mtpl') Multiple Choice
 												option(value='shrt') Short Answer
 												option(value='mtch') Matching
@@ -82,39 +82,18 @@ block pageContent
 															center
 																h6 Correct Answer
 																	select(form='newtestCreation' name='correctAnswer')
-																		div(ng-repeat='answer in answers')
-																			.form-group
-																				option(value='a') A
+																		.form-group
+																			option(value='a') A
 														.small-9.columns
-															.row
-																.large-12.columns
-																	.row.collapse
-																		.small-2.columns
-																			span.prefix A:
-																		.small-10.columns
-																			input(type='text', name='answer', placeholder='Apple')
-															.row
-																.large-12.columns
-																	.row.collapse
-																		.small-2.columns
-																			span.prefix B:
-																		.small-10.columns
-																			input(type='text',name='answer', placeholder='Banana')
-															.row
-																.large-12.columns
-																	.row.collapse
-																		.small-2.columns
-																			span.prefix C:
-																		.small-10.columns
-																			input(type='text',name='answer',placeholder='Carrot')
-															.row
-																.large-12.columns
-																	.row.collapse
-																		.small-2.columns
-																			span.prefix D:
-																		.small-10.columns
-																			input(type='text', placeholder='Daikon')
-										.large-2.columns
+															div(ng-repeat='answer in answers')
+																.row
+																	.large-12.columns
+																		.row.collapse
+																			.small-2.columns
+																				span.prefix A
+																			.small-10.columns
+																				input(type='text', name='answer', placeholder='Enter answer choice')
+														a.medium.radius.button(ng-click='newAnswer()') Add Answer
 											a
 												h4(stlye='float:right;', align='right')
 													font(color='F21111') &times;
@@ -123,7 +102,7 @@ block pageContent
 												br
 												.large-12.columns
 													center
-														input(id="checkbox1" name='randomnized' type='checkbox')
+														input(id='checkbox1' name='randomnized' type='checkbox')
 														label(for='random') Randomize?
 												.large-12.columns
 													.row.collapse
