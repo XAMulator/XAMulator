@@ -1,3 +1,8 @@
+$(function(){
+	if (window.location.href.match(/.newtest/)){
+		$("#datepicker").datepicker();
+	}
+});
 function addUp() {
 	var questionsJSON = [];
 	var answerIndex = 0;
