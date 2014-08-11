@@ -40,10 +40,11 @@ block pageContent
 			script(src="js/newtest.js")
 			form(action='/newtest' method='post' id = "newtestCreation")
 				.panel
-					input(type = "text" placeholder = "Test Points" name="testPoints")
-					input(type = "text" id="datepicker" name="dateTest")
-					input(type="radio" name="randomTestQuestions")
 					input(type="text" placeholder="Test Name" name="testName")
+					input(type = "text" id="datepicker" name="dateTest" placeholder="Date of Test")
+					input(type = "text" placeholder = "Test Points" name="testPoints")
+					input(type="radio" name="RandomizeTestQuestions")
+					input(type="text" placeholder="Time to take Test" name="testTime")
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
