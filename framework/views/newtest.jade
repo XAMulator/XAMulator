@@ -39,12 +39,15 @@ block pageContent
 		.large-12.columns
 			form(action='/newtest' method='post' id = "newtestCreation")
 				.panel
-					input(type = "text" placeholder = "Test Points" name="testPoints")
-					input(type = "text" id="datepicker" name="dateTest")
-					input(type="radio" name="randomTestQuestions")
-					input(type="text" placeholder="Test Name" name="testName")
-					input(type="text" placeholder="Test Date" name="testDate")
-					input(type="datetime-local" name="dateTimeTest")
+					.row
+						.large-8.columns
+							input(type="text" placeholder="Test Name" name="testName")
+						.large-2.columns
+							input(type = "text" id="datepicker" name="dateTest" placeholder="Date of Test")
+						.large-2.columns
+							input(type = "text" placeholder = "Test Points" name="testPoints")		
+					input(type="radio" name="RandomizeTestQuestions")
+					input(type="datetime-local" name="datetimeTest")
 					div(ng-repeat='question in questions')
 						.form-group
 							.row
