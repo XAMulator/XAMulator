@@ -22,6 +22,7 @@ function queryAsk() {
 		if (["exit", "quit"].indexOf(query) == -1) {
 			connection.query(query, function(err, rows, fields) {
 				console.log(rows);
+				console.log(fields);
 				queryAsk();
 			});
 		} else {
