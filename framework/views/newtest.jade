@@ -72,12 +72,15 @@ block pageContent
 														option(value='othr') Other
 												br
 												br
-												.large-3.columns
-													span.prefix Worth
-												.large-6.columns
-													input(name='points' type='number', placeholder='Points...')
-												.large-3.columns
-													span.postfix Pts.
+												.row
+												.large-12.columns
+													.row.collapse
+														.small-4.columns
+															span.prefix Worth
+														.small-5.columns
+															input(name='points' type='number', placeholder='#...')
+														.small-3.columns
+															span.postfix Pts.
 										.large-1.columns
 											br
 										.large-8.columns
@@ -90,36 +93,6 @@ block pageContent
 															span.prefix Question:
 														.small-10.columns
 															input.form-control.medform(name='question' type='text', placeholder='e.g. How big is China?', ng-model='item.text')
-											.row
-												.large-12.columns
-													.row.collapse
-														.small-2.columns
-															br
-															center
-																h6 # Answer Choices
-															select(form='newtestCreation' name='amtAnswers')
-																option(value='2') 2
-																option(value='3') 3
-																option(value='4') 4
-																option(value='5') 5
-															center
-																h6 Correct Answer
-																	select(form='newtestCreation' name='correctAnswer')
-																		.form-group
-																			option(value='a') A
-														.small-9.columns
-															div(ng-repeat='answer in answers')
-																.row
-																	.large-12.columns
-																		.row.collapse
-																			.small-2.columns
-																				span.prefix A
-																			.small-10.columns
-																				input(type='text', name='answer', placeholder='Enter answer choice')
-														a.medium.radius.button(ng-click='newAnswer()') Add Answer
-											a
-												h4(stlye='float:right;', align='right')
-													font(color='F21111') &times;
 											.row
 												br
 												.large-3.columns
@@ -147,8 +120,8 @@ block pageContent
 																		input(type='text', name='answer', placeholder='Enter answer choice')
 													center
 														a.small.radius.button(ng-click='newAnswer()') Add Answer
-											.row
-												//-.large-6.columns
+											//-.row
+												.large-6.columns
 													center
 														input(id='checkbox1' name='randomnized' type='checkbox' style="padding-top:10px;")
 														label(for='random') Randomize?
