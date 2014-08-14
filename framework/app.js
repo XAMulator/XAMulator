@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+// app.use(app.router); <-- THIS ISN'T EXPRESS 3.X
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -60,6 +61,7 @@ app.post('/newtest', function(request, response) {
 			limit,
 			testId; //need to implement way to retrieve testID
 
+<<<<<<< HEAD
 	connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
 																									connection.escape(body.testName),
 																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
@@ -95,6 +97,40 @@ app.post('/newtest', function(request, response) {
 		);
 		answersCounted = answersCounted + i;
 	}
+=======
+	// connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s", 
+	// 																								connection.escape(body.testName),
+	// 																								connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
+	// 																								connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
+	// 																								connection.escape(body.dateTest), //Datepicker Needs to be implemented
+	// 																								connection.escape((body.dateTest.parse <= new Date().parse) ? 0 1), //not tested
+	// 																								connection.escape(''), //need to implement teacher id
+	// 																								conneciton.escape(body.randomTestQuestions),
+	// 																								connection.escape('')
+	// 																								));
+	// if (typeof(body.questionType) === "string"){
+	// 	limit = 1;
+	// } else {
+	// 	limit = body.questionType.length;
+	// }
+	// for (var i = 0; i < limit; i++){
+	// 	connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, test, fullPoints, noAnswerPoints, wrongAnswerPoints, isRandomnized) VALUES (" +
+	// 																sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+	// 																				connection.escape(body.questionType[i]), //questiontype
+	// 																				connection.escape(body.question[i]), //questionContent
+	// 																				connection.escape(JSON.stringify(body.answer.slice(answersCounted, answersCounted + i))), //answers
+	// 																				connection.escape(body.correctAnswer[i]), //correctAnswer
+	// 																				connection.escape(testId), //Test Foreign Key not null
+	// 																				connection.escape(''), //Fullpoints 
+	// 																				connection.escape(''), //noAnswerPoints
+	// 																				connection.escape(''), //wrongAnswerPoints
+	// 																				connection.escape('') //isRandom
+	// 																			 )
+	// 														+ ");"
+	// 	)
+	// 	answersCounted = answersCounted + i;
+	// }
+>>>>>>> parent of 1df8023... Merge branch 'master' of https://github.com/justinyangusa/angelhack
 });
 
 app.post("/login/", function(request, response) {
