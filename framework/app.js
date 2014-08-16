@@ -2,20 +2,21 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var override = require('method-override');
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
-var logger = require('express-logger');
-var sprintf = require("sprintf-js").sprintf;
-var expressErrorHandler = require("express-error-handler");
-var routes = require('./routes');
-var test = require('./routes/test.js');
-var newtest = require('./routes/newtest.js');
-var app = express();
-var server;
+var express = require('express'),
+		http = require('http'),
+		path = require('path'),
+		override = require('method-override'),
+		mysql = require('mysql'),
+		bodyParser = require('body-parser'),
+		logger = require('express-logger'),
+		sprintf = require("sprintf-js").sprintf,
+		vsprintf = require("sprintf-js").vsprintf,
+ 		expressErrorHandler = require("express-error-handler"),
+ 		routes = require('./routes'),
+ 		test = require('./routes/test.js'),
+ 		newtest = require('./routes/newtest.js'),
+ 		app = express(),
+ 		server;
 
 // all environments
 app.set('port', process.env.PORT || 1337);
@@ -27,9 +28,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-// app.use(app.router); <-- THIS ISN'T EXPRESS 3.X
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+var connection = mysql.createConnection({
+	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
+	user: "angelhack",
+	password: "angelhack",
+	database: "testing"
+});
+connection.connect();
+
+/** all functions and code definitions go below
+*/
+
+var dateNow = date.now();
 
 function shuffle(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -40,28 +54,60 @@ function shuffle(array) {
 	}
 	return array;
 }
-var connection = mysql.createConnection({
-	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
-	user: "angelhack",
-	password: "angelhack",
-	database: "testing"
-});
-connection.connect();
+
+function log(msg){
+	if (console !== undefined && msg !== undefined){
+		console.log(msg);
+	}
+}
+function formatDbEntries(array){
+		var entries = [null];
+		for (int i = 0; i < array.legnth; i++){
+
+		}
+		return entries;
+}
+var insertIntodb(db, array){
+		if (array !== undefined && db !== undefined){
+				var format = '%s';
+				for (int i = 0; i<array.length -1; i++){
+					format = "%s, " + format;
+				}
+				connection.query(connection.escape(sprintf("INSERT INTO %s VALUES " + sprintf(format, )), db))
+	}
+}
+
 
 app.get('/', routes.index);
 app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
-	response.set("Access-Control-Allow-Origin", "*");
-	console.log(request.body);
-	response.json(request.body);
-	console.log(request.body);
-	var body = request.body,
-			answersCounted = 0,
-			limit,
-			testId; //need to implement way to retrieve testID
+		response.set("Access-Control-Allow-Origin", "*");
+		response.json(request.body);
 
-	connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+		var body = request.body,
+				answersCounted = 0,
+				limit,
+				testId; //need to implement way to retrieve testID
+
+		var entries = [
+					conneciton.escape(body.testName),
+					//...
+
+		];
+
+		
+		log("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+																									connection.escape(body.testName),
+																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
+																									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
+																									connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
+																									connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
+																									connection.escape(''), //need to implement teacher id
+																									conneciton.escape(body.randomTestQuestions),
+																									connection.escape('')
+																									));
+		connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
 																									connection.escape(body.testName),
 																									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
 																									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
