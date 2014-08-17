@@ -48,7 +48,7 @@ block pageContent
 							input(type = "text" placeholder = "Test Points" name="testPoints")		
 					input(type="radio" name="RandomizeTestQuestions")
 					input(type="datetime-local" name="datetimeTest")
-					div(ng-repeat='question in questions')
+					div(ng-repeat='question in questions' class="question-block")
 						.form-group
 							.row
 								.callout.panel

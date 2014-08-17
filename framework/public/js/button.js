@@ -1,17 +1,7 @@
-//Author: Justin Yang
-//        y4ng.com
-
-//button.js
-
-//http://github.com/justinyangusa/angelhack
-
-//Angular JS
 function addListener (reference){
-	console.log(reference);
 
 	$(".question-type")[reference].onchange = function () {
-		console.log(this.value);
-		changeQuestionType(this.value, reference + 2);
+		changeQuestionType(this.value, reference);
 	}
 };
 var ngAddApp = angular.module("ngAddApp", []);
