@@ -60,20 +60,23 @@ function log(msg){
 		console.log(msg);
 	}
 }
-function formatDbEntries(array){
+function formatquestionsDbEntries(reference, questionsArray){
 		var result = [null];
-		for (var i = 0; i < array.legnth; i++){
 
+		for (var i = 0; i < array.legnth; i++){
+			result.push()
 		}
-		return entries;
+		return result;
 }
-function insertIntodb(db, array){
+//Inserting into Db should only be used for inserting after array of values has been correctly formatted
+//Use formatDB_NAMEDbEntries for formatted Array
+function insertIntoDb(db, array){
 		if (array !== undefined && db !== undefined){
 				var format = '%s';
 				for (var i = 0; i<array.length -1; i++){
 					format = "%s, " + format;
 				}
-				connection.query(connection.escape(sprintf("INSERT INTO %s VALUES " + sprintf(format, formatDbEntries(db))), db))
+				connection.query(connection.escape(sprintf("INSERT INTO %s VALUES " + vsprintf(format, [null].concat(array)), db)));
 	}
 }
 
@@ -82,77 +85,61 @@ app.get('/', routes.index);
 app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
-		response.set("Access-Control-Allow-Origin", "*");
-		response.json(request.body);
-		var body = request.body,
-				answersCounted = 0,
-				limit,
-				testId; //need to implement way to retrieve testID
+	response.set("Access-Control-Allow-Origin", "*");
+	response.json(request.body);
+	var body = request.body,
+		answersCounted = 0,
+		limit; 
 
-		var entries = {
-				"tests": [
-							connection.escape(body.testName),
-							connection.escape(body.testPoints),
-							connection.escape(dateNow),
-							connection.escape(body.datetimeTest.replace("T", " ")),
-							connection.escape((new Date(body.datetimeTest).parse() <= dateNow.parse()) ? 0:1),
-							connection.escape(1),
-							connection.escape(0),
-							connection.escape(''); //examtime ?
-						 ],
-				"questions": [
+	//All form information together
+	var entries = {
+			"tests": [
+				connection.escape(body.testName),
+				connection.escape(body.testPoints),
+				connection.escape(dateNow),
+				connection.escape(body.datetimeTest.replace("T", " ")),
+				connection.escape((new Date(body.datetimeTest).parse() <= dateNow.parse()) ? 0:1),
+				connection.escape(1),
+				connection.escape(0),
+				connection.escape('') //examtime ?
+			],
 
-							connection.escape()
-							 ]
-			
-		};
-
+			"questions": [
+				connection.escape(body.questionType), //questiontype
+				connection.escape(body.question), //questionContent
+				connection.escape(JSON.stringify(body.answer)), //answers
+				connection.escape(body.correctAnswer), //correctAnswer
+				connection.escape(testId), //Test Foreign Key not null
+				connection.escape(''), //Fullpoints
+				connection.escape(''), //noAnswerPoints
+				connection.escape(''), //wrongAnswerPoints
+				connection.escape('') //isRandom
+		 	]
 		
-		// log("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
-		// 									connection.escape(body.testName),
-		// 									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
-		// 									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
-		// 									connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
-		// 									connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
-		// 									connection.escape(''), //need to implement teacher id
-		// 									conneciton.escape(body.randomTestQuestions),
-		// 									connection.escape('')
-		// 									));
-		// connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
-		// 												connection.escape(body.testName),
-		// 												connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
-		// 												connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
-		// 												connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
-		// 												connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
-		// 												connection.escape(''), //need to implement teacher id
-		// 												conneciton.escape(body.randomTestQuestions),
-		// 												connection.escape('')
-		// 												));
+	};
+	//Insert test information into databse
+	insertIntoDb("tests", entries.tests);
+	//Retrieve from database the proper testId Foreign Key and sets all of the Foreign Key References to the Correct Foreign Key
 	connection.query("SELECT P_Id FROM tests ORDER BY P_Id DESC LIMIT 1", function(err, row, fields){
-		testId = rows[0].P_Id;
+		if (rows[0].P_Id !== null){
+			entries.question[4] = rows[0].P_Id;
+		}
 	});
-	if (typeof(body.questionType) === "string"){
-		limit = 1;
-	} else {
-		limit = body.questionType.length;
+
+	//One question case
+	if (typeof(entries.questions[0] === "string")){
+		insertIntoDb("questions", entries.questions)
 	}
-	for (var i = 0; i < limit; i++){
-		connection.query("INSERT INTO questions (questiontype, questionContent, answersJSON, correctAnswer, test, fullPoints, noAnswerPoints, wrongAnswerPoints, isRandomnized) VALUES (" +
-							sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
-									connection.escape(body.questionType[i]), //questiontype
-									connection.escape(body.question[i]), //questionContent
-									connection.escape(JSON.stringify(body.answer.slice(answersCounted, answersCounted + i))), //answers
-									connection.escape(body.correctAnswer[i]), //correctAnswer
-									connection.escape(testId), //Test Foreign Key not null
-									connection.escape(''), //Fullpoints
-									connection.escape(''), //noAnswerPoints
-									connection.escape(''), //wrongAnswerPoints
-									connection.escape('') //isRandom
-								 )
-															+ ");"
-		);
-		answersCounted = answersCounted + i;
+	//Many questions case
+	else {
+		for (var i = 0; i < entries.questions[0].legnth; i++){
+			insertIntoDb("questions", formatDbEntries(i, entries.questions))
+		}
 	}
+
+
+	//Redirect user to a finsh page - NEEDS TO BE IMPLEMENTED
+	response.redirect('/');
 });
 
 app.post("/login/", function(request, response) {
