@@ -43,7 +43,7 @@ connection.connect();
 /** all functions and code definitions go below
 */
 
-var dateNow = Date.now();
+var dateNow = new Date().toISOString().slice(0, 19).replace("T", " ");
 
 function shuffle(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -61,7 +61,7 @@ function log(msg){
 	}
 }
 function formatDbEntries(array){
-		var entries = [null];
+		var result = [null];
 		for (var i = 0; i < array.legnth; i++){
 
 		}
@@ -73,7 +73,7 @@ function insertIntodb(db, array){
 				for (var i = 0; i<array.length -1; i++){
 					format = "%s, " + format;
 				}
-				connection.query(connection.escape(sprintf("INSERT INTO %s VALUES " + sprintf(format, null)), db))
+				connection.query(connection.escape(sprintf("INSERT INTO %s VALUES " + sprintf(format, formatDbEntries(db))), db))
 	}
 }
 
@@ -89,33 +89,45 @@ app.post('/newtest', function(request, response) {
 				limit,
 				testId; //need to implement way to retrieve testID
 
-		var entries = [
-					connection.escape(body.testName),
-					//...
+		var entries = {
+				"tests": [
+							connection.escape(body.testName),
+							connection.escape(body.testPoints),
+							connection.escape(dateNow),
+							connection.escape(body.datetimeTest.replace("T", " ")),
+							connection.escape((new Date(body.datetimeTest).parse() <= dateNow.parse()) ? 0:1),
+							connection.escape(1),
+							connection.escape(0),
+							connection.escape(''); //examtime ?
+						 ],
+				"questions": [
 
-		];
+							connection.escape()
+							 ]
+			
+		};
 
 		
-		log("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
-											connection.escape(body.testName),
-											connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
-											connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
-											connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
-											connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
-											connection.escape(''), //need to implement teacher id
-											conneciton.escape(body.randomTestQuestions),
-											connection.escape('')
-											));
-		connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
-														connection.escape(body.testName),
-														connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
-														connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
-														connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
-														connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
-														connection.escape(''), //need to implement teacher id
-														conneciton.escape(body.randomTestQuestions),
-														connection.escape('')
-														));
+		// log("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+		// 									connection.escape(body.testName),
+		// 									connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
+		// 									connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
+		// 									connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
+		// 									connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
+		// 									connection.escape(''), //need to implement teacher id
+		// 									conneciton.escape(body.randomTestQuestions),
+		// 									connection.escape('')
+		// 									));
+		// connection.query("INSERT INTO tests " + sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s",
+		// 												connection.escape(body.testName),
+		// 												connection.escape(body.testPoints), //NEEDS TO BE IMPLEMENTED
+		// 												connection.escape(new Date().toISOString().slice(0, 19).replace('T', ' ')),
+		// 												connection.escape(body.datetimeTest.replace("T", " ")), //Datepicker Needs to be implemented
+		// 												connection.escape((new Date(body.datetimeTest.parse()) <= new Date().parse()) ? 0:1),//not tested
+		// 												connection.escape(''), //need to implement teacher id
+		// 												conneciton.escape(body.randomTestQuestions),
+		// 												connection.escape('')
+		// 												));
 	connection.query("SELECT P_Id FROM tests ORDER BY P_Id DESC LIMIT 1", function(err, row, fields){
 		testId = rows[0].P_Id;
 	});
