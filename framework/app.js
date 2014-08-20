@@ -38,7 +38,7 @@ var connection = mysql.createConnection({
 	password: "angelhack",
 	database: "testing"
 });
-connection.connect();
+
 
 /** all functions and code definitions go below
 */
@@ -85,6 +85,7 @@ app.get('/', routes.index);
 app.get('/test', test.index);
 app.get('/newtest', newtest.index);
 app.post('/newtest', function(request, response) {
+	connection.connect();
 	response.set("Access-Control-Allow-Origin", "*");
 	response.json(request.body);
 	var body = request.body,
