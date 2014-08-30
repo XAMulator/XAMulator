@@ -8,7 +8,7 @@ Created by Justin Yang (y4ng.com), Ken Noh (kennoh.com), Jonathan Zhang, Kevin Z
 
 Integrated Testing Environment featuring User focus and powerful additions
 
-You can find the code for the program at [kevzho/angelhack](https://github.com/kevzho/angelhack).
+You can find the code for the program at (https://github.com/XAMulator/XAMulator).
 
 Installation
 ------------
