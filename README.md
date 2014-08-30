@@ -1,14 +1,20 @@
 XAMulator
 =========
 
-AngelHack SV Spring 2014 Hackathon project
-Transition to XAMulator 
+Intuitive and secure online test
 
-Created by Justin Yang (y4ng.com), Ken Noh (kennoh.com), Jonathan Zhang, Kevin Zhou
+Originally a hack started at the AngelHack Silicon Valley Spring 2014 Hackathon
+
+Created by Justin Yang @justinyangusa (y4ng.com), 
+           Ken Noh @SquareDorito (kennoh.com), 
+           Jonathan Zhang @woodenchopsticks, 
+           Kevin Zhou @kevzho
 
 Integrated Testing Environment featuring User focus and powerful additions
 
-You can find the code for the program at (https://github.com/XAMulator/XAMulator).
+
+You can find the code for the program on GitHub at [XAMulator/XAMulator](https://github.com/XAMulator/XAMulator).
+
 
 Installation
 ------------
@@ -23,3 +29,6 @@ Packages are now installed. Run the server on your specified port, defaulting to
 node app.js
 ```
 
+License
+-------
+MIT License.

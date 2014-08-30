@@ -23,6 +23,7 @@
 		"serve-favicon": "*",
 		"express-error-handler": "*",
 		"express-logger": "*",
-		"body-parser": "*"
+		"body-parser": "*",
+		"passport": "*"
 	}
 }
