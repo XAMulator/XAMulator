@@ -3,8 +3,17 @@
  */
 
 var express = require('express'),
+	app = express(),
 	http = require('http'),
 	path = require('path'),
+	mongoose = require('mongoose'),
+	passport = require('passport'),
+	flash = require('connect-flash'),
+	morgan = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser = require('body-parser'),
+	session = require('express-session'),
+	configDB = require('./config/database.js'),
 	override = require('method-override'),
 	mysql = require('mysql'),
 	bodyParser = require('body-parser'),
@@ -18,12 +27,15 @@ var express = require('express'),
 	app = express(),
 	server;
 
+mongoose.connect(configDB.url);
+require('./config/passport')(passport);
+
 // all environments
 app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(logger({path: 'logs/log.txt'}));
-app.use(bodyParser.text());
+//app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -31,6 +43,17 @@ app.use(bodyParser.urlencoded({
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 var connection = mysql.createConnection({
 	host: "angelhack.c626h2danuwm.us-west-2.rds.amazonaws.com",
@@ -90,7 +113,7 @@ app.post('/newtest', function(request, response) {
 	response.json(request.body);
 	var body = request.body,
 		answersCounted = 0,
-		limit; 
+		limit;
 
 	//All form information together
 	var entries = {
@@ -116,7 +139,7 @@ app.post('/newtest', function(request, response) {
 				connection.escape(''), //wrongAnswerPoints
 				connection.escape('') //isRandom
 		 	]
-		
+
 	};
 	//Insert test information into databse
 	insertIntoDb("tests", entries.tests);
