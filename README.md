@@ -1,11 +1,10 @@
 XAMulator
 =========
 
+THIS REPO IS NO LONGER BEING USED.
+
 Intuitive and secure online test
 
-Originally a hack started at the AngelHack Silicon Valley Spring 2014 Hackathon
-
-Created by Justin Yang @justinyangusa (y4ng.com), 
            Ken Noh @SquareDorito (kennoh.com), 
            Jonathan Zhang @woodenchopsticks, 
            Kevin Zhou @kevzho
