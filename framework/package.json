@@ -1,43 +1,29 @@
 {
-	"name": "XAMulator",
-	"version": "0.5.1",
+	"name": "ExpressWebsite",
+	"version": "0.0.0",
 	"description": "ExpressWebsite",
 	"main": "app.js",
 	"author": {
-		"name": "Justin Yang",
-		"email": "justin@y4ng.com"
+		"name": "sedouard",
+		"email": ""
 	},
 	"repository" :
 	{
 		"type" : "git",
-		"url" : "http://github.com/XAMulator/XAMulator.git"
+		"url" : "http://github.com/justinyangusa/angelhack.git"
 	},
 	"dependencies": {
 		"bootstrap": "^3.2.0",
-		"express": "~4.0.0",
+		"express": "^3.4.4",
 		"jade": "*",
 		"nib": "^1.0.3",
 		"stylus": "*",
+		"method-override": "*",
 		"mysql": "*",
 		"serve-favicon": "*",
 		"express-error-handler": "*",
 		"express-logger": "*",
-
-		"mongoose" : "~3.8.1",
-		"passport" : "~0.1.17",
-		"passport-local" : "~0.1.6",
-		"passport-facebook" : "~1.0.2",
-		"passport-twitter" : "~1.0.2",
-		"passport-google-oauth" : "~0.1.5",
-		"connect-flash" : "~0.1.1",
-		"bcrypt-nodejs" : "latest",
-
-		"morgan": "~1.0.0",
-		"body-parser": "~1.0.0",
-		"cookie-parser": "~1.0.0",
-		"method-override": "~1.0.0",
-		"express-session": "~1.0.0",
-
-		"bson": "0.2.9"
+		"body-parser": "*",
+		"passport": "*"
 	}
 }

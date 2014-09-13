@@ -29,22 +29,3 @@ build/Release
 backend/node_modules
 DB connection tester/node_modules
 desktop/node_modules
-
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
-
-npm-debug.log
-node_modules
-
-framework/config/database.js
-framework/config/auth.js
