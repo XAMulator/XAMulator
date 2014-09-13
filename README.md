@@ -1,8 +1,6 @@
 XAMulator
 =========
 
-THIS REPO IS NO LONGER BEING USED.
-
 Intuitive and secure online test
 
            Ken Noh @SquareDorito (kennoh.com), 
