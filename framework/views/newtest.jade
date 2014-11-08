@@ -69,7 +69,22 @@ block pageContent
 												option(value='shrt') Short Answer
 												option(value='mtch') Matching
 												option(value='othr') Other
-										.large-7.columns
+											row
+												.large-12.columns
+													center
+														input(id="checkbox1" name='randomnized' type='checkbox')
+														label(for='random') Randomize?
+												
+												.row.collapse
+													.small-5.columns
+														span.prefix Worth
+													.small-4.columns
+														input(name='points' type='number', placeholder='')
+													.small-3.columns
+														span.postfix Pts.
+										.large-1.columns
+											br
+										.large-8.columns
 											center
 												h4 Question Info
 											.row
@@ -126,25 +141,15 @@ block pageContent
 																			span.prefix D:
 																		.small-10.columns
 																			input(type='text', placeholder='Daikon')
+												h4(style='float:right;margin-top:-125px;margin-right:-25px;', align='right')
+													font(color='F21111') x
 										.large-2.columns
 											a
-												h4(stlye='float:right;', align='right')
-													font(color='F21111') &times;
+												
 											.row
 												br
 												br
-												.large-12.columns
-													center
-														input(id="checkbox1" name='randomnized' type='checkbox')
-														label(for='random') Randomize?
-												.large-12.columns
-													.row.collapse
-														.small-5.columns
-															span.prefix Worth
-														.small-4.columns
-															input(name='points' type='number', placeholder='')
-														.small-3.columns
-															span.postfix Pts.
+												
 						br
 					.row
 						.large-12.columns

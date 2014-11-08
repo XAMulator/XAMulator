@@ -29,3 +29,4 @@ build/Release
 backend/node_modules
 DB connection tester/node_modules
 desktop/node_modules
+framework/node_modules/bcrypt-nodejs/.npmignore
