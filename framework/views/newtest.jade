@@ -26,26 +26,36 @@ block rightBar
 							img(data-caption='File 3', src='img/folderpic.jpg')
 		a.close-reveal-modal &times;
 
-br
-
 block pageContent
-	.row (style='max-width:0')
+	.row.primary
 		.large-12.columns
-			h1.title Dashboard
+			center
+				h1.title(style="font-family: 'Lobster', cursive; font-size:340%") Dashboard
 		br
+	.row
+		.large-12.columns
+			.panel
+				.row
+					.large-4.columns
+						.callout.panel
+					.large-4.columns
+						.callout.panel
+					.large-4.columns
+						.callout.panel
 	.row
 		.large-12.columns
 			form(action='/newtest' method='post' id = "newtestCreation")
 				.panel
 					.row
-						.large-8.columns
+						.large-7.columns
 							input(type = "text" placeholder="Test Name" name="testName")
+						.large-3.columns
+							input(type="datetime-local" name="datetimeTest" placeholder="Date of Test")
 						.large-2.columns
-							input(type = "text" id="datepicker" name="dateTest" placeholder="Date of Test")
-						.large-2.columns
-							input(type = "text" placeholder = "Test Points" name="testPoints")		
-					input(type="radio" name="RandomizeTestQuestions")
-					input(type="datetime-local" name="datetimeTest")
+							input(type = "text" placeholder = "Test Points" name="testPoints")
+					.row
+						.large-12.columns
+							
 					div(ng-repeat='question in questions'  class="question-block")
 						.form-group
 							.row
@@ -136,8 +146,10 @@ block pageContent
 														.small-3.columns
 															span.postfix Pts.
 						br
-					center
-						a.medium.radius.button(ng-click='newQuestion()') Add Question
+					.row
+						.large-12.columns
+							.center
+								a.medium.radius.button(ng-click='newQuestion()') Add Question
 
 					.row
 						.large-12.columns
